@@ -69,18 +69,18 @@ export type SectionId = (typeof SectionId)[keyof typeof SectionId];
  */
 export const heroData: Hero = {
   imageSrc: heroImage,
-  name: `I'm Tim Baker.`,
+  name: `I'm Zenan (King) Wu.`,
   description: (
     <>
       <p className="prose-sm text-stone-200 sm:prose-base lg:prose-lg">
-        I'm a Victoria based <strong className="text-stone-100">Full Stack Software Engineer</strong>, currently working
-        at <strong className="text-stone-100">Instant Domains</strong> helping build a modern, mobile-first, domain
-        registrar and site builder.
+        I'm a Melbourne based <strong className="text-stone-100">Engineering and Commerce Undergraduate</strong>, currently studying
+        at <strong className="text-stone-100">Monash University</strong>.
       </p>
       <p className="prose-sm text-stone-200 sm:prose-base lg:prose-lg">
-        In my free time time, you can catch me training in <strong className="text-stone-100">Muay Thai</strong>,
-        plucking my <strong className="text-stone-100">banjo</strong>, or exploring beautiful{' '}
-        <strong className="text-stone-100">Vancouver Island</strong>.
+        In my free time time, you can catch me training for <strong className="text-stone-100">MMA</strong>, 
+        playing <strong className="text-stone-100">tennis</strong>, 
+        producing <strong className="text-stone-100">music</strong>, or modifying my beautiful{' '}
+        <strong className="text-stone-100">BMW G310R Motorcycle</strong>.
       </p>
     </>
   ),
