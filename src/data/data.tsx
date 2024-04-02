@@ -12,7 +12,6 @@ import FacebookIcon from '../components/Icon/FacebookIcon';
 import GithubIcon from '../components/Icon/GithubIcon';
 import InstagramIcon from '../components/Icon/InstagramIcon';
 import LinkedInIcon from '../components/Icon/LinkedInIcon';
-import TwitterIcon from '../components/Icon/TwitterIcon';
 import YouTubeIcon from '../components/Icon/YoutubeIcon';
 import heroImage from '../images/header-background.jpg';
 import porfolioImage1 from '../images/portfolio/portfolio-1.jpg';
@@ -46,8 +45,8 @@ import {
  * Page meta data
  */
 export const homePageMeta: HomepageMeta = {
-  title: 'King Wu Personal Profile',
-  description: "This is Personal Profile showcases King Wu",
+  title: "King Wu's Personal Website",
+  description: "This is a Personal Profile that showcases King Wu",
 };
 
 /**
@@ -129,29 +128,29 @@ export const skills: SkillGroup[] = [
         level: 10,
       },
       {
-        name: 'French',
-        level: 4,
+        name: 'Chinese',
+        level: 10,
       },
       {
-        name: 'Spanish',
+        name: 'Japanese',
         level: 3,
       },
     ],
   },
   {
-    name: 'Frontend development',
+    name: 'Tech-Stack',
     skills: [
       {
-        name: 'React',
+        name: 'React (JavaScript/TypeScript)',
+        level: 5,
+      },
+      {
+        name: 'Python',
         level: 9,
       },
       {
-        name: 'Typescript',
-        level: 7,
-      },
-      {
-        name: 'GraphQL',
-        level: 6,
+        name: 'C#',
+        level: 5,
       },
     ],
   },
@@ -271,13 +270,19 @@ export const education: TimelineItem[] = [
     date: 'September, 2026',
     location: 'Monash University',
     title: 'Bachelor of Mechanical Engineering (Honours)',
-    content: <p>Describe your experience at school, what you learned, what useful skills you have acquired etc.</p>,
+    content: <p>During my pursuit of the Bachelor of Mechanical Engineering, I delved into the intricacies of designing, analyzing, and optimizing mechanical systems. 
+      Through hands-on projects and coursework, I gained proficiency in CAD modeling, finite element analysis, and prototype development. 
+      This degree not only equipped me with technical knowledge but also instilled in me a passion for innovation and a commitment to sustainability.</p>,
   },
   {
     date: 'September, 2026',
     location: 'Monash University',
     title: 'Bachelor of Finance',
-    content: <p>Describe your experience at school, what you learned, what useful skills you have acquired etc.</p>,
+    content: <p>During my Bachelor of Finance studies, 
+      I explored various financial instruments, risk management strategies, and investment techniques. 
+      These insights empowered me to analyze market trends, assess investment opportunities, and make informed decisions. 
+      Moreover, I developed a strong foundation in financial modeling, quantitative analysis, and data interpretation, 
+      enabling me to forecast future financial performance and optimize business strategies. </p>,
   },
 ];
 
@@ -340,23 +345,23 @@ export const contact: ContactSection = {
   items: [
     {
       type: ContactType.Email,
-      text: 'reachout@timbaker.me',
-      href: 'mailto:reachout@timbaker.me',
+      text: 'Kingwu1206@gmail.com',
+      href: 'mailto:kingwu1206@gmail.com',
     },
     {
       type: ContactType.Location,
-      text: 'Victoria BC, Canada',
-      href: 'https://www.google.ca/maps/place/Victoria,+BC/@48.4262362,-123.376775,14z',
+      text: 'Melbourne VIC, Australia',
+      href: 'https://maps.app.goo.gl/fY8xVHymGQj9xL5H9',
     },
     {
-      type: ContactType.Instagram,
-      text: '@tbakerx',
-      href: 'https://www.instagram.com/tbakerx/',
+      type: ContactType.Facebook,
+      text: '@Kingwu1206',
+      href: 'https://www.facebook.com/kingwu1206/',
     },
     {
-      type: ContactType.Github,
-      text: 'tbakerx',
-      href: 'https://github.com/tbakerx',
+      type: ContactType.LinkedIn,
+      text: '@Zenanwu',
+      href: 'https://www.linkedin.com/in/zenan-wu-50681624b/',
     },
   ],
 };
@@ -369,5 +374,5 @@ export const socialLinks: Social[] = [
   {label: 'Facebook', Icon: FacebookIcon, href: 'https://www.facebook.com/kingwu1206/'},
   {label: 'LinkedIn', Icon: LinkedInIcon, href: 'https://www.linkedin.com/in/zenan-wu-50681624b/'},
   {label: 'Instagram', Icon: InstagramIcon, href: 'https://www.instagram.com/kingwu1206/'},
-  {label: 'Twitter', Icon: TwitterIcon, href: 'https://twitter.com/TimBakerx'},
+  {label: 'YouTube', Icon: YouTubeIcon, href: 'https://youtube.com/@Kingwu1206?si=nZJBIZbwHxS0arw7'},
 ];
