@@ -303,7 +303,7 @@ export const testimonial: TestimonialSection = {
 
 export const contact: ContactSection = {
   headerText: 'Get in touch.',
-  description: 'How to reach me',
+  description: "Let's Connect! If you have any questions, ideas, or simply want to say hello, I'd love to hear from you.",
   items: [
     {
       type: ContactType.Email,

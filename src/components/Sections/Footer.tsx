@@ -23,8 +23,8 @@ const Footer: FC = memo(() => (
         className="-m-2 flex items-center gap-x-1 rounded-md p-2 ring-yellow focus:outline-none focus:ring-2">
         <BoltIcon className="h-5 w-5 text-yellow" />
         <span>
-          <span className="text-white">Built with</span>
-          <span className="italic text-blue">React/Tailwind/TypeScript</span>
+          <span className="text-white">Built with </span>
+          <span className="italic text-blue-500">React/Tailwind/TypeScript</span>
         </span>
       </a>
       <span className="text-sm text-neutral-700">© Copyright {currentYear} Zenan Wu</span>
