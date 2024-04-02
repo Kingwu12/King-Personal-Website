@@ -13,7 +13,6 @@ import GithubIcon from '../components/Icon/GithubIcon';
 import InstagramIcon from '../components/Icon/InstagramIcon';
 import LinkedInIcon from '../components/Icon/LinkedInIcon';
 import YouTubeIcon from '../components/Icon/YoutubeIcon';
-import Pdf from '../data/resume.pdf'
 import heroImage from '../images/header-background.jpg';
 import LockdIn from '../images/portfolio/LockdIn.jpg';
 import profilepic from '../images/profilepic.jpg';
@@ -341,3 +340,7 @@ export const socialLinks: Social[] = [
   {label: 'Instagram', Icon: InstagramIcon, href: 'https://www.instagram.com/kingwu1206/'},
   {label: 'YouTube', Icon: YouTubeIcon, href: 'https://youtube.com/@Kingwu1206?si=nZJBIZbwHxS0arw7'},
 ];
+function onResumeClick() {
+  throw new Error('Function not implemented.');
+}
+
