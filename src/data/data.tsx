@@ -74,7 +74,8 @@ export const heroData: Hero = {
         <strong className="text-stone-100">BMW G310R Motorcycle</strong>. 
       </p>
       <p className="prose-sm text-stone-200 sm:prose-base lg:prose-lg">
-        Self-taught in front-end web development, I'm now diving into back-end, machine learning, and quant trading.
+        Self-taught in <strong className="text-stone-100">front-end web development</strong>, I'm now diving into <strong className="text-stone-100">back-end development</strong>, 
+        <strong className="text-stone-100"> machine learning</strong>, and <strong className="text-stone-100">quantitative trading</strong>.
       </p>
     </>
   ),
