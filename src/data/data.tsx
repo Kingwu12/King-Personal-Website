@@ -14,7 +14,7 @@ import InstagramIcon from '../components/Icon/InstagramIcon';
 import LinkedInIcon from '../components/Icon/LinkedInIcon';
 import YouTubeIcon from '../components/Icon/YoutubeIcon';
 import heroImage from '../images/header-background.jpg';
-import porfolioImage1 from '../images/portfolio/portfolio-1.jpg';
+import LockdIn from '../images/portfolio/LockdIn.jpg';
 import porfolioImage2 from '../images/portfolio/portfolio-2.jpg';
 import porfolioImage3 from '../images/portfolio/portfolio-3.jpg';
 import porfolioImage4 from '../images/portfolio/portfolio-4.jpg';
@@ -81,13 +81,16 @@ export const heroData: Hero = {
         In my free time time, you can catch me training for <strong className="text-stone-100">MMA</strong>, 
         playing <strong className="text-stone-100">tennis</strong>, 
         producing <strong className="text-stone-100">music</strong>, or modifying my beautiful{' '}
-        <strong className="text-stone-100">BMW G310R Motorcycle</strong>.
+        <strong className="text-stone-100">BMW G310R Motorcycle</strong>. 
+      </p>
+      <p className="prose-sm text-stone-200 sm:prose-base lg:prose-lg">
+        Self-taught in front-end web development, I'm now diving into back-end, machine learning, and quant trading.
       </p>
     </>
   ),
   actions: [
     {
-      href: '/assets/resume.pdf',
+      href: '/assets/Resume.pdf',
       text: 'Resume',
       primary: true,
       Icon: ArrowDownTrayIcon,
@@ -154,6 +157,7 @@ export const skills: SkillGroup[] = [
       },
     ],
   },
+  /**
   {
     name: 'Backend development',
     skills: [
@@ -188,6 +192,7 @@ export const skills: SkillGroup[] = [
       },
     ],
   },
+   */
 ];
 
 /**
@@ -195,11 +200,12 @@ export const skills: SkillGroup[] = [
  */
 export const portfolioItems: PortfolioItem[] = [
   {
-    title: 'Project title 1',
-    description: 'Give a short description of your project here.',
-    url: 'https://reactresume.com',
-    image: porfolioImage1,
+    title: 'LockdIn - UniHack',
+    description: 'LockdIn is primarily a Chrome Extension landing page for Monash University students',
+    url: 'https://devpost.com/software/lockdin?ref_content=my-projects-tab&ref_feature=my_projects',
+    image: LockdIn,
   },
+  /**
   {
     title: 'Project title 2',
     description: 'Give a short description of your project here.',
@@ -224,42 +230,7 @@ export const portfolioItems: PortfolioItem[] = [
     url: 'https://reactresume.com',
     image: porfolioImage5,
   },
-  {
-    title: 'Project title 6',
-    description: 'Give a short description of your project here.',
-    url: 'https://reactresume.com',
-    image: porfolioImage6,
-  },
-  {
-    title: 'Project title 7',
-    description: 'Give a short description of your project here.',
-    url: 'https://reactresume.com',
-    image: porfolioImage7,
-  },
-  {
-    title: 'Project title 8',
-    description: 'Give a short description of your project here.',
-    url: 'https://reactresume.com',
-    image: porfolioImage8,
-  },
-  {
-    title: 'Project title 9',
-    description: 'Give a short description of your project here.',
-    url: 'https://reactresume.com',
-    image: porfolioImage9,
-  },
-  {
-    title: 'Project title 10',
-    description: 'Give a short description of your project here.',
-    url: 'https://reactresume.com',
-    image: porfolioImage10,
-  },
-  {
-    title: 'Project title 11',
-    description: 'Give a short description of your project here.',
-    url: 'https://reactresume.com',
-    image: porfolioImage11,
-  },
+ */
 ];
 
 /**
@@ -288,24 +259,23 @@ export const education: TimelineItem[] = [
 
 export const experience: TimelineItem[] = [
   {
-    date: 'March 2010 - Present',
-    location: 'Awesome Development Company',
-    title: 'Senior UX Engineer',
+    date: 'February 2022 - Present',
+    location: 'Ezy Math Tutoring Pty Ltd',
+    title: 'Mathematics Tutor',
     content: (
       <p>
-        Describe work, special projects, notable achievements, what technologies you have been working with, and
-        anything else that would be useful for an employer to know.
+        Experienced Methods and Specialist Mathematics Tutor dedicated to fostering student success through personalised and engaging lessons.
       </p>
     ),
   },
   {
-    date: 'March 2007 - February 2010',
-    location: 'Garage Startup Studio',
-    title: 'Junior bug fixer',
+    date: 'November 2021 - Present',
+    location: 'Melbourne Sports Institute',
+    title: 'Basketball Coach',
     content: (
       <p>
-        Describe work, special projects, notable achievements, what technologies you have been working with, and
-        anything else that would be useful for an employer to know.
+        As a dedicated Basketball Coach at the Melbourne Sports Institute,
+        I led and developed young athletes across a range of skill levels, fostering an environment of excellence, teamwork, and personal growth.
       </p>
     ),
   },
@@ -313,10 +283,11 @@ export const experience: TimelineItem[] = [
 
 /**
  * Testimonial section
- */
+*/
 export const testimonial: TestimonialSection = {
   imageSrc: testimonialImage,
   testimonials: [
+    /**
     {
       name: 'John Doe',
       text: 'Use this as an opportunity to promote what it is like to work with you. High value testimonials include ones from current or past co-workers, managers, or from happy clients.',
@@ -332,6 +303,7 @@ export const testimonial: TestimonialSection = {
       text: 'Add several of these, and keep them as fresh as possible, but be sure to focus on quality testimonials with strong highlights of your skills/work ethic.',
       image: 'https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/69.jpg',
     },
+    */
   ],
 };
 
