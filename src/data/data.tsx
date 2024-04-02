@@ -8,12 +8,13 @@ import {
   SparklesIcon,
 } from '@heroicons/react/24/outline';
 
+import FacebookIcon from '../components/Icon/FacebookIcon';
 import GithubIcon from '../components/Icon/GithubIcon';
 import InstagramIcon from '../components/Icon/InstagramIcon';
 import LinkedInIcon from '../components/Icon/LinkedInIcon';
-import StackOverflowIcon from '../components/Icon/StackOverflowIcon';
 import TwitterIcon from '../components/Icon/TwitterIcon';
-import heroImage from '../images/header-background.webp';
+import YouTubeIcon from '../components/Icon/YoutubeIcon';
+import heroImage from '../images/header-background.jpg';
 import porfolioImage1 from '../images/portfolio/portfolio-1.jpg';
 import porfolioImage2 from '../images/portfolio/portfolio-2.jpg';
 import porfolioImage3 from '../images/portfolio/portfolio-3.jpg';
@@ -29,6 +30,7 @@ import profilepic from '../images/profilepic.jpg';
 import testimonialImage from '../images/testimonial.webp';
 import {
   About,
+  calculateAge,
   ContactSection,
   ContactType,
   Hero,
@@ -44,8 +46,8 @@ import {
  * Page meta data
  */
 export const homePageMeta: HomepageMeta = {
-  title: 'React Resume Template',
-  description: "Example site built with Tim Baker's react resume template",
+  title: 'King Wu Personal Profile',
+  description: "This is Personal Profile showcases King Wu",
 };
 
 /**
@@ -104,16 +106,14 @@ export const heroData: Hero = {
  */
 export const aboutData: About = {
   profileImageSrc: profilepic,
-  description: `Use this bio section as your way of describing yourself and saying what you do, what technologies you like
-  to use or feel most comfortable with, describing your personality, or whatever else you feel like throwing
-  in.`,
+  description: ``,
   aboutItems: [
-    {label: 'Location', text: 'Victoria, BC', Icon: MapIcon},
-    {label: 'Age', text: '29', Icon: CalendarIcon},
-    {label: 'Nationality', text: 'Canadian / Irish', Icon: FlagIcon},
-    {label: 'Interests', text: 'Motorcycles, Muay Thai, Banjos', Icon: SparklesIcon},
-    {label: 'Study', text: 'University of Victoria', Icon: AcademicCapIcon},
-    {label: 'Employment', text: 'Instant Domains, inc.', Icon: BuildingOffice2Icon},
+    {label: 'Location', text: 'Melbourne, VIC', Icon: MapIcon},
+    {label: 'Age', text: `${calculateAge('2003-03-28')}`, Icon: CalendarIcon},
+    {label: 'Nationality', text: 'Chinese / Australian', Icon: FlagIcon},
+    {label: 'Interests', text: 'Motorcycles, MMA, Music Production', Icon: SparklesIcon},
+    {label: 'Study', text: 'Monash University', Icon: AcademicCapIcon},
+    {label: 'Employment', text: 'Self-employed', Icon: BuildingOffice2Icon},
   ],
 };
 
@@ -264,19 +264,19 @@ export const portfolioItems: PortfolioItem[] = [
 ];
 
 /**
- * Resume section -- TODO: Standardize resume contact format or offer MDX
+ * Resume section
  */
 export const education: TimelineItem[] = [
   {
-    date: 'April 2007',
-    location: 'Clown college',
-    title: 'Masters in Beer tasting',
+    date: 'September, 2026',
+    location: 'Monash University',
+    title: 'Bachelor of Mechanical Engineering (Honours)',
     content: <p>Describe your experience at school, what you learned, what useful skills you have acquired etc.</p>,
   },
   {
-    date: 'March 2003',
-    location: 'School of Business',
-    title: 'What did you study 101',
+    date: 'September, 2026',
+    location: 'Monash University',
+    title: 'Bachelor of Finance',
     content: <p>Describe your experience at school, what you learned, what useful skills you have acquired etc.</p>,
   },
 ];
@@ -365,9 +365,9 @@ export const contact: ContactSection = {
  * Social items
  */
 export const socialLinks: Social[] = [
-  {label: 'Github', Icon: GithubIcon, href: 'https://github.com/tbakerx'},
-  {label: 'Stack Overflow', Icon: StackOverflowIcon, href: 'https://stackoverflow.com/users/8553186/tim-baker'},
-  {label: 'LinkedIn', Icon: LinkedInIcon, href: 'https://www.linkedin.com/in/timbakerx/'},
-  {label: 'Instagram', Icon: InstagramIcon, href: 'https://www.instagram.com/reactresume/'},
+  {label: 'Github', Icon: GithubIcon, href: 'https://github.com/Kingwu12'},
+  {label: 'Facebook', Icon: FacebookIcon, href: 'https://www.facebook.com/kingwu1206/'},
+  {label: 'LinkedIn', Icon: LinkedInIcon, href: 'https://www.linkedin.com/in/zenan-wu-50681624b/'},
+  {label: 'Instagram', Icon: InstagramIcon, href: 'https://www.instagram.com/kingwu1206/'},
   {label: 'Twitter', Icon: TwitterIcon, href: 'https://twitter.com/TimBakerx'},
 ];

@@ -11,7 +11,7 @@ const About: FC = memo(() => {
     <Section className="bg-neutral-800" sectionId={SectionId.About}>
       <div className={classNames('grid grid-cols-1 gap-y-4', {'md:grid-cols-4': !!profileImageSrc})}>
         {!!profileImageSrc && (
-          <div className="col-span-1 flex justify-center md:justify-start">
+          <div className="col-span-1 flex justify-center md:justify-start mt-[-2rem]">
             <div className="relative h-32 w-32 overflow-hidden rounded-xl md:h-64 md:w-64 mr-10">
               <Image alt="about-me-image" className="h-full w-full object-cover" src={profileImageSrc} />
             </div>
