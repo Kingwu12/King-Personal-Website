@@ -13,6 +13,7 @@ import GithubIcon from '../components/Icon/GithubIcon';
 import InstagramIcon from '../components/Icon/InstagramIcon';
 import LinkedInIcon from '../components/Icon/LinkedInIcon';
 import YouTubeIcon from '../components/Icon/YoutubeIcon';
+import Pdf from '../data/resume.pdf'
 import heroImage from '../images/header-background.jpg';
 import LockdIn from '../images/portfolio/LockdIn.jpg';
 import profilepic from '../images/profilepic.jpg';
@@ -81,7 +82,8 @@ export const heroData: Hero = {
   ),
   actions: [
     {
-      href: '../data/assets/Resume.pdf',
+      href: Pdf,
+      target: "_blank",
       text: 'Resume',
       primary: true,
       Icon: ArrowDownTrayIcon,
