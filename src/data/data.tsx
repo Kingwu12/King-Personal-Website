@@ -81,7 +81,7 @@ export const heroData: Hero = {
   ),
   actions: [
     {
-      href: '/public/resume.pdf',
+      href: 'https://kingwu.tiiny.site/',
       text: 'Resume',
       primary: true,
       Icon: ArrowDownTrayIcon,
