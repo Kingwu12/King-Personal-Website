@@ -14,8 +14,8 @@ import InstagramIcon from '../components/Icon/InstagramIcon';
 import LinkedInIcon from '../components/Icon/LinkedInIcon';
 import YouTubeIcon from '../components/Icon/YoutubeIcon';
 import heroImage from '../images/header-background.jpg';
-import LockdIn from '../images/portfolio/LockdIn.jpg';
 import InstaClone from '../images/portfolio/Insta-Clone.png';
+import LockdIn from '../images/portfolio/LockdIn.jpg';
 import profilepic from '../images/profilepic.jpg';
 import testimonialImage from '../images/testimonial.webp';
 import {
@@ -102,12 +102,12 @@ export const aboutData: About = {
   profileImageSrc: profilepic,
   description: ``,
   aboutItems: [
-    { label: 'Location', text: 'Melbourne, VIC', Icon: MapIcon },
-    { label: 'Age', text: `${calculateAge('2003-03-28')}`, Icon: CalendarIcon },
-    { label: 'Nationality', text: 'Chinese / Australian', Icon: FlagIcon },
-    { label: 'Interests', text: 'Motorcycles, MMA, Music Production', Icon: SparklesIcon },
-    { label: 'Study', text: 'Monash University', Icon: AcademicCapIcon },
-    { label: 'Employment', text: 'Self-employed', Icon: BuildingOffice2Icon },
+    {label: 'Location', text: 'Melbourne, VIC', Icon: MapIcon},
+    {label: 'Age', text: `${calculateAge('2003-03-28')}`, Icon: CalendarIcon},
+    {label: 'Nationality', text: 'Chinese / Australian', Icon: FlagIcon},
+    {label: 'Interests', text: 'Motorcycles, MMA, Music Production', Icon: SparklesIcon},
+    {label: 'Study', text: 'Monash University', Icon: AcademicCapIcon},
+    {label: 'Employment', text: 'Self-employed', Icon: BuildingOffice2Icon},
   ],
 };
 
@@ -335,10 +335,10 @@ export const contact: ContactSection = {
  * Social items
  */
 export const socialLinks: Social[] = [
-  { label: 'Github', Icon: GithubIcon, href: 'https://github.com/Kingwu12' },
-  { label: 'Facebook', Icon: FacebookIcon, href: 'https://www.facebook.com/kingwu1206/' },
-  { label: 'LinkedIn', Icon: LinkedInIcon, href: 'https://www.linkedin.com/in/zenan-wu-50681624b/' },
-  { label: 'Instagram', Icon: InstagramIcon, href: 'https://www.instagram.com/kingwu1206/' },
-  { label: 'YouTube', Icon: YouTubeIcon, href: 'https://youtube.com/@Kingwu1206?si=nZJBIZbwHxS0arw7' },
+  {label: 'Github', Icon: GithubIcon, href: 'https://github.com/Kingwu12'},
+  {label: 'Facebook', Icon: FacebookIcon, href: 'https://www.facebook.com/kingwu1206/'},
+  {label: 'LinkedIn', Icon: LinkedInIcon, href: 'https://www.linkedin.com/in/zenan-wu-50681624b/'},
+  {label: 'Instagram', Icon: InstagramIcon, href: 'https://www.instagram.com/kingwu1206/'},
+  {label: 'YouTube', Icon: YouTubeIcon, href: 'https://youtube.com/@Kingwu1206?si=nZJBIZbwHxS0arw7'},
 ];
 
