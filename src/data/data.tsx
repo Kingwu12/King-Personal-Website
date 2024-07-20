@@ -1,4 +1,4 @@
-import { 
+import {
   AcademicCapIcon,
   ArrowDownTrayIcon,
   BuildingOffice2Icon,
@@ -15,6 +15,7 @@ import LinkedInIcon from '../components/Icon/LinkedInIcon';
 import YouTubeIcon from '../components/Icon/YoutubeIcon';
 import heroImage from '../images/header-background.jpg';
 import LockdIn from '../images/portfolio/LockdIn.jpg';
+import InstaClone from '../images/portfolio/Insta-Clone.png';
 import profilepic from '../images/profilepic.jpg';
 import testimonialImage from '../images/testimonial.webp';
 import {
@@ -68,13 +69,13 @@ export const heroData: Hero = {
         at <strong className="text-stone-100">Monash University</strong>.
       </p>
       <p className="prose-sm text-stone-200 sm:prose-base lg:prose-lg">
-        In my free time time, you can catch me training for <strong className="text-stone-100">MMA</strong>, 
-        playing <strong className="text-stone-100">tennis</strong>, 
+        In my free time time, you can catch me training for <strong className="text-stone-100">MMA</strong>,
+        playing <strong className="text-stone-100">tennis</strong>,
         producing <strong className="text-stone-100">music</strong>, or modifying my beautiful{' '}
-        <strong className="text-stone-100">BMW G310R Motorcycle</strong>. 
+        <strong className="text-stone-100">BMW G310R Motorcycle</strong>.
       </p>
       <p className="prose-sm text-stone-200 sm:prose-base lg:prose-lg">
-        Self-taught in <strong className="text-stone-100">front-end web development</strong>, I'm now diving into <strong className="text-stone-100">back-end development</strong>, 
+        Self-taught in <strong className="text-stone-100">front-end web development</strong>, I'm now diving into <strong className="text-stone-100">back-end development</strong>,
         <strong className="text-stone-100"> machine learning</strong>, and <strong className="text-stone-100">quantitative trading</strong>.
       </p>
     </>
@@ -101,12 +102,12 @@ export const aboutData: About = {
   profileImageSrc: profilepic,
   description: ``,
   aboutItems: [
-    {label: 'Location', text: 'Melbourne, VIC', Icon: MapIcon},
-    {label: 'Age', text: `${calculateAge('2003-03-28')}`, Icon: CalendarIcon},
-    {label: 'Nationality', text: 'Chinese / Australian', Icon: FlagIcon},
-    {label: 'Interests', text: 'Motorcycles, MMA, Music Production', Icon: SparklesIcon},
-    {label: 'Study', text: 'Monash University', Icon: AcademicCapIcon},
-    {label: 'Employment', text: 'Self-employed', Icon: BuildingOffice2Icon},
+    { label: 'Location', text: 'Melbourne, VIC', Icon: MapIcon },
+    { label: 'Age', text: `${calculateAge('2003-03-28')}`, Icon: CalendarIcon },
+    { label: 'Nationality', text: 'Chinese / Australian', Icon: FlagIcon },
+    { label: 'Interests', text: 'Motorcycles, MMA, Music Production', Icon: SparklesIcon },
+    { label: 'Study', text: 'Monash University', Icon: AcademicCapIcon },
+    { label: 'Employment', text: 'Self-employed', Icon: BuildingOffice2Icon },
   ],
 };
 
@@ -136,7 +137,7 @@ export const skills: SkillGroup[] = [
     skills: [
       {
         name: 'React (JavaScript/TypeScript)',
-        level: 5,
+        level: 8,
       },
       {
         name: 'Python',
@@ -196,13 +197,14 @@ export const portfolioItems: PortfolioItem[] = [
     url: 'https://devpost.com/software/lockdin?ref_content=my-projects-tab&ref_feature=my_projects',
     image: LockdIn,
   },
-  /**
+
   {
-    title: 'Project title 2',
-    description: 'Give a short description of your project here.',
-    url: 'https://reactresume.com',
-    image: porfolioImage2,
+    title: "Instagram Clone Project",
+    description: 'This is a practice project prior my start up idea to learn more about react and vite.',
+    url: 'https://insta-clone-2dc9k3k8g-kingwu12s-projects.vercel.app/auth',
+    image: InstaClone,
   },
+  /**
   {
     title: 'Project title 3',
     description: 'Give a short description of your project here.',
@@ -232,18 +234,18 @@ export const education: TimelineItem[] = [
     date: 'September, 2026',
     location: 'Monash University',
     title: 'Bachelor of Mechanical Engineering (Honours)',
-    content: <p>During my pursuit of the Bachelor of Mechanical Engineering, I delved into the intricacies of designing, analyzing, and optimizing mechanical systems. 
-      Through hands-on projects and coursework, I gained proficiency in CAD modeling, finite element analysis, and prototype development. 
+    content: <p>During my pursuit of the Bachelor of Mechanical Engineering, I delved into the intricacies of designing, analyzing, and optimizing mechanical systems.
+      Through hands-on projects and coursework, I gained proficiency in CAD modeling, finite element analysis, and prototype development.
       This degree not only equipped me with technical knowledge but also instilled in me a passion for innovation and a commitment to sustainability.</p>,
   },
   {
     date: 'September, 2026',
     location: 'Monash University',
     title: 'Bachelor of Finance',
-    content: <p>During my Bachelor of Finance studies, 
-      I explored various financial instruments, risk management strategies, and investment techniques. 
-      These insights empowered me to analyze market trends, assess investment opportunities, and make informed decisions. 
-      Moreover, I developed a strong foundation in financial modeling, quantitative analysis, and data interpretation, 
+    content: <p>During my Bachelor of Finance studies,
+      I explored various financial instruments, risk management strategies, and investment techniques.
+      These insights empowered me to analyze market trends, assess investment opportunities, and make informed decisions.
+      Moreover, I developed a strong foundation in financial modeling, quantitative analysis, and data interpretation,
       enabling me to forecast future financial performance and optimize business strategies. </p>,
   },
 ];
@@ -333,10 +335,10 @@ export const contact: ContactSection = {
  * Social items
  */
 export const socialLinks: Social[] = [
-  {label: 'Github', Icon: GithubIcon, href: 'https://github.com/Kingwu12'},
-  {label: 'Facebook', Icon: FacebookIcon, href: 'https://www.facebook.com/kingwu1206/'},
-  {label: 'LinkedIn', Icon: LinkedInIcon, href: 'https://www.linkedin.com/in/zenan-wu-50681624b/'},
-  {label: 'Instagram', Icon: InstagramIcon, href: 'https://www.instagram.com/kingwu1206/'},
-  {label: 'YouTube', Icon: YouTubeIcon, href: 'https://youtube.com/@Kingwu1206?si=nZJBIZbwHxS0arw7'},
+  { label: 'Github', Icon: GithubIcon, href: 'https://github.com/Kingwu12' },
+  { label: 'Facebook', Icon: FacebookIcon, href: 'https://www.facebook.com/kingwu1206/' },
+  { label: 'LinkedIn', Icon: LinkedInIcon, href: 'https://www.linkedin.com/in/zenan-wu-50681624b/' },
+  { label: 'Instagram', Icon: InstagramIcon, href: 'https://www.instagram.com/kingwu1206/' },
+  { label: 'YouTube', Icon: YouTubeIcon, href: 'https://youtube.com/@Kingwu1206?si=nZJBIZbwHxS0arw7' },
 ];
 
