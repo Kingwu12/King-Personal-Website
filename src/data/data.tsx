@@ -14,6 +14,7 @@ import InstagramIcon from '../components/Icon/InstagramIcon';
 import LinkedInIcon from '../components/Icon/LinkedInIcon';
 import YouTubeIcon from '../components/Icon/YoutubeIcon';
 import heroImage from '../images/header-background.jpg';
+import FocaFounderHack from '../images/portfolio/FocaFounderHack.png';
 import InstaClone from '../images/portfolio/Insta-Clone.png';
 import LockdIn from '../images/portfolio/LockdIn.jpg';
 import profilepic from '../images/profilepic.jpg';
@@ -102,12 +103,12 @@ export const aboutData: About = {
   profileImageSrc: profilepic,
   description: ``,
   aboutItems: [
-    {label: 'Location', text: 'Melbourne, VIC', Icon: MapIcon},
-    {label: 'Age', text: `${calculateAge('2003-03-28')}`, Icon: CalendarIcon},
-    {label: 'Nationality', text: 'Chinese / Australian', Icon: FlagIcon},
-    {label: 'Interests', text: 'Motorcycles, MMA, Music Production', Icon: SparklesIcon},
-    {label: 'Study', text: 'Monash University', Icon: AcademicCapIcon},
-    {label: 'Employment', text: 'Self-employed', Icon: BuildingOffice2Icon},
+    { label: 'Location', text: 'Melbourne, VIC', Icon: MapIcon },
+    { label: 'Age', text: `${calculateAge('2003-03-28')}`, Icon: CalendarIcon },
+    { label: 'Nationality', text: 'Chinese / Australian', Icon: FlagIcon },
+    { label: 'Interests', text: 'Motorcycles, MMA, Music Production', Icon: SparklesIcon },
+    { label: 'Study', text: 'Monash University', Icon: AcademicCapIcon },
+    { label: 'Employment', text: 'Self-employed', Icon: BuildingOffice2Icon },
   ],
 };
 
@@ -136,7 +137,7 @@ export const skills: SkillGroup[] = [
     name: 'Tech-Stack',
     skills: [
       {
-        name: 'React (JavaScript/TypeScript)',
+        name: 'React + Vite (JavaScript)',
         level: 8,
       },
       {
@@ -144,7 +145,7 @@ export const skills: SkillGroup[] = [
         level: 9,
       },
       {
-        name: 'C#',
+        name: 'MySQL',
         level: 5,
       },
     ],
@@ -203,6 +204,12 @@ export const portfolioItems: PortfolioItem[] = [
     description: 'This is a practice project prior my start up idea to learn more about react and vite.',
     url: 'https://insta-clone-2dc9k3k8g-kingwu12s-projects.vercel.app/auth',
     image: InstaClone,
+  },
+  {
+    title: 'Foca - FounderHack',
+    description: 'The beginning of Foca, a productivity tool that blends the element of social accountability.',
+    url: 'https://devpost.com/software/foca-bdep8x?ref_content=my-projects-tab&ref_feature=my_projects',
+    image: FocaFounderHack,
   },
   /**
   {
@@ -335,10 +342,10 @@ export const contact: ContactSection = {
  * Social items
  */
 export const socialLinks: Social[] = [
-  {label: 'Github', Icon: GithubIcon, href: 'https://github.com/Kingwu12'},
-  {label: 'Facebook', Icon: FacebookIcon, href: 'https://www.facebook.com/kingwu1206/'},
-  {label: 'LinkedIn', Icon: LinkedInIcon, href: 'https://www.linkedin.com/in/zenan-wu-50681624b/'},
-  {label: 'Instagram', Icon: InstagramIcon, href: 'https://www.instagram.com/kingwu1206/'},
-  {label: 'YouTube', Icon: YouTubeIcon, href: 'https://youtube.com/@Kingwu1206?si=nZJBIZbwHxS0arw7'},
+  { label: 'Github', Icon: GithubIcon, href: 'https://github.com/Kingwu12' },
+  { label: 'Facebook', Icon: FacebookIcon, href: 'https://www.facebook.com/kingwu1206/' },
+  { label: 'LinkedIn', Icon: LinkedInIcon, href: 'https://www.linkedin.com/in/zenan-wu-50681624b/' },
+  { label: 'Instagram', Icon: InstagramIcon, href: 'https://www.instagram.com/kingwu1206/' },
+  { label: 'YouTube', Icon: YouTubeIcon, href: 'https://youtube.com/@Kingwu1206?si=nZJBIZbwHxS0arw7' },
 ];
 
