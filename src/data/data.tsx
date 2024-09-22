@@ -14,6 +14,7 @@ import InstagramIcon from '../components/Icon/InstagramIcon';
 import LinkedInIcon from '../components/Icon/LinkedInIcon';
 import YouTubeIcon from '../components/Icon/YoutubeIcon';
 import heroImage from '../images/header-background.jpg';
+import Foca from '../images/portfolio/Foca.png';
 import FocaFounderHack from '../images/portfolio/FocaFounderHack.png';
 import InstaClone from '../images/portfolio/Insta-Clone.png';
 import LockdIn from '../images/portfolio/LockdIn.jpg';
@@ -76,8 +77,7 @@ export const heroData: Hero = {
         <strong className="text-stone-100">BMW G310R Motorcycle</strong>.
       </p>
       <p className="prose-sm text-stone-200 sm:prose-base lg:prose-lg">
-        Self-taught in <strong className="text-stone-100">front-end web development</strong>, I'm now diving into <strong className="text-stone-100">back-end development</strong>,
-        <strong className="text-stone-100"> machine learning</strong>, and <strong className="text-stone-100">quantitative trading</strong>.
+        I am the founder and CEO of <strong className="text-stone-100">Foca</strong>, a <strong className="text-stone-100">social-media-productivity</strong> tool. Check it out <a href="https://www.focahq.com/" rel="noopener noreferrer" target="_blank"><strong className="text-stone-100">here</strong></a>.
       </p>
     </>
   ),
@@ -87,6 +87,7 @@ export const heroData: Hero = {
       text: 'Resume',
       primary: true,
       Icon: ArrowDownTrayIcon,
+      target: '_blank',
     },
     {
       href: `#${SectionId.Contact}`,
@@ -103,12 +104,12 @@ export const aboutData: About = {
   profileImageSrc: profilepic,
   description: ``,
   aboutItems: [
-    {label: 'Location', text: 'Melbourne, VIC', Icon: MapIcon},
-    {label: 'Age', text: `${calculateAge('2003-03-28')}`, Icon: CalendarIcon},
-    {label: 'Nationality', text: 'Chinese / Australian', Icon: FlagIcon},
-    {label: 'Interests', text: 'Motorcycles, MMA, Music Production', Icon: SparklesIcon},
-    {label: 'Study', text: 'Monash University', Icon: AcademicCapIcon},
-    {label: 'Employment', text: 'Self-employed', Icon: BuildingOffice2Icon},
+    { label: 'Location', text: 'Melbourne, VIC', Icon: MapIcon },
+    { label: 'Age', text: `${calculateAge('2003-03-28')}`, Icon: CalendarIcon },
+    { label: 'Nationality', text: 'Chinese / Australian', Icon: FlagIcon },
+    { label: 'Interests', text: 'Motorcycles, MMA, Music Production', Icon: SparklesIcon },
+    { label: 'Study', text: 'Monash University', Icon: AcademicCapIcon },
+    { label: 'Employment', text: 'Self-employed', Icon: BuildingOffice2Icon },
   ],
 };
 
@@ -211,13 +212,13 @@ export const portfolioItems: PortfolioItem[] = [
     url: 'https://devpost.com/software/foca-bdep8x?ref_content=my-projects-tab&ref_feature=my_projects',
     image: FocaFounderHack,
   },
-  /**
   {
-    title: 'Project title 3',
-    description: 'Give a short description of your project here.',
-    url: 'https://reactresume.com',
-    image: porfolioImage3,
+    title: 'Foca - Your Productivity Buddy',
+    description: "Unlock your full potential with Foca. Plan goals, complete tasks, and share your progress with your 'buddies' who will keep you motivated and focused.",
+    url: 'https://www.focahq.com/',
+    image: Foca,
   },
+  /**
   {
     title: 'Project title 4',
     description: 'Give a short description of your project here.',
@@ -342,10 +343,10 @@ export const contact: ContactSection = {
  * Social items
  */
 export const socialLinks: Social[] = [
-  {label: 'Github', Icon: GithubIcon, href: 'https://github.com/Kingwu12'},
-  {label: 'Facebook', Icon: FacebookIcon, href: 'https://www.facebook.com/kingwu1206/'},
-  {label: 'LinkedIn', Icon: LinkedInIcon, href: 'https://www.linkedin.com/in/zenan-wu-50681624b/'},
-  {label: 'Instagram', Icon: InstagramIcon, href: 'https://www.instagram.com/kingwu1206/'},
-  {label: 'YouTube', Icon: YouTubeIcon, href: 'https://youtube.com/@Kingwu1206?si=nZJBIZbwHxS0arw7'},
+  { label: 'Github', Icon: GithubIcon, href: 'https://github.com/Kingwu12' },
+  { label: 'Facebook', Icon: FacebookIcon, href: 'https://www.facebook.com/kingwu1206/' },
+  { label: 'LinkedIn', Icon: LinkedInIcon, href: 'https://www.linkedin.com/in/zenan-wu-50681624b/' },
+  { label: 'Instagram', Icon: InstagramIcon, href: 'https://www.instagram.com/kingwu1206/' },
+  { label: 'YouTube', Icon: YouTubeIcon, href: 'https://youtube.com/@Kingwu1206?si=nZJBIZbwHxS0arw7' },
 ];
 
