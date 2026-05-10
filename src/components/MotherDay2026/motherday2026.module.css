@@ -1,0 +1,659 @@
+/**
+ * Mother’s Day — scrapbook / collage (CSS Module).
+ * Palette: `--paper-*` / `--md-*` on `.mumRoot`.
+ */
+
+.mumRoot {
+  --md-cream: #f6efe4;
+  --md-cream-deep: #e8dcc8;
+  --md-ink: #2a241c;
+  --md-ink-soft: rgba(42, 36, 28, 0.72);
+  --paper-base: #faf3e8;
+  --paper-grain: rgba(120, 92, 62, 0.04);
+  --md-shadow: 0 14px 36px rgba(42, 36, 28, 0.1);
+  --md-shadow-soft: 0 8px 28px rgba(42, 36, 28, 0.07);
+  --tape: rgba(232, 214, 188, 0.58);
+
+  position: relative;
+  min-height: 100vh;
+  min-height: 100dvh;
+  overflow-x: hidden;
+  background-color: var(--paper-base);
+  background-image:
+    radial-gradient(ellipse 120% 80% at 50% -15%, #fffdf8 0%, transparent 55%),
+    radial-gradient(circle at 12% 22%, var(--paper-grain) 0%, transparent 42%),
+    radial-gradient(circle at 88% 58%, var(--paper-grain) 0%, transparent 38%),
+    radial-gradient(circle at 40% 88%, rgba(180, 140, 100, 0.03) 0%, transparent 45%),
+    repeating-linear-gradient(
+      -8deg,
+      transparent,
+      transparent 3px,
+      rgba(255, 255, 255, 0.035) 3px,
+      rgba(255, 255, 255, 0.035) 4px
+    ),
+    linear-gradient(185deg, #fdf8f0 0%, var(--md-cream) 42%, var(--md-cream-deep) 100%);
+  color: var(--md-ink);
+  font-family:
+    system-ui,
+    -apple-system,
+    'PingFang SC',
+    'Microsoft YaHei',
+    'Noto Sans SC',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.mumSans {
+  font-family: inherit;
+}
+
+/* Intro */
+.mumIntro {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1.5rem calc(2rem + env(safe-area-inset-bottom));
+  text-align: center;
+  transition:
+    opacity 0.85s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.85s cubic-bezier(0.22, 1, 0.36, 1),
+    visibility 0.85s;
+}
+
+.mumIntroHidden {
+  z-index: 0;
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-12px) scale(0.985);
+}
+
+.mumIntroTitle {
+  margin: 0;
+  font-size: clamp(2.25rem, 8vw, 3.25rem);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  line-height: 1.15;
+}
+
+.mumIntroSubtitle {
+  margin: 1rem 0 0;
+  max-width: min(22rem, 92vw);
+  color: var(--md-ink-soft);
+  font-size: clamp(1rem, 3.6vw, 1.125rem);
+  font-weight: 400;
+  line-height: 1.65;
+}
+
+.mumIntroBtn {
+  margin-top: 2.5rem;
+  appearance: none;
+  border: none;
+  border-radius: 999px;
+  background: var(--md-ink);
+  padding: 0.95rem 2.25rem;
+  color: var(--paper-base);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+  box-shadow: var(--md-shadow-soft);
+  transition:
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.35s ease,
+    opacity 0.2s ease;
+}
+
+.mumIntroBtn:hover {
+  box-shadow: var(--md-shadow);
+  transform: translateY(-1px);
+}
+
+.mumIntroBtn:active {
+  transform: translateY(0) scale(0.98);
+  opacity: 0.92;
+}
+
+/* Museum */
+.mumMuseum {
+  position: relative;
+  z-index: 1;
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity 0.95s cubic-bezier(0.22, 1, 0.36, 1) 0.08s,
+    transform 0.95s cubic-bezier(0.22, 1, 0.36, 1) 0.08s;
+}
+
+.mumMuseumVisible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.mumMuseumInner {
+  margin: 0 auto;
+  max-width: min(52rem, 94vw);
+  padding: 2rem 1rem 4rem;
+  padding-bottom: calc(4rem + env(safe-area-inset-bottom));
+}
+
+@media (min-width: 768px) {
+  .mumMuseumInner {
+    padding: 2.75rem 1.5rem 5rem;
+  }
+}
+
+.mumMuseumHeader {
+  margin-bottom: 1.75rem;
+  text-align: center;
+}
+
+.mumMuseumHeading {
+  margin: 0;
+  font-size: clamp(1.5rem, 5vw, 1.875rem);
+  font-weight: 500;
+  letter-spacing: 0.04em;
+}
+
+.mumMuseumLede {
+  margin: 0.5rem auto 0;
+  max-width: 26rem;
+  color: var(--md-ink-soft);
+  font-size: 0.9375rem;
+  line-height: 1.65;
+}
+
+/* Decorative paper strips */
+.mumPaperDivider {
+  height: 10px;
+  margin: 0 auto 1.75rem;
+  max-width: min(18rem, 85%);
+  border-radius: 3px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(210, 185, 150, 0.35) 18%,
+    rgba(245, 232, 214, 0.65) 50%,
+    rgba(210, 185, 150, 0.35) 82%,
+    transparent
+  );
+  opacity: 0.85;
+  transform: rotate(-0.8deg);
+}
+
+.mumPaperDividerSoft {
+  height: 8px;
+  margin: 2.5rem auto 2rem;
+  max-width: min(14rem, 70%);
+  border-radius: 2px;
+  background: linear-gradient(
+    90deg,
+    rgba(200, 170, 130, 0.15),
+    rgba(240, 225, 205, 0.45),
+    rgba(200, 170, 130, 0.15)
+  );
+  opacity: 0.75;
+  transform: rotate(1.2deg);
+}
+
+/* Collage wall — textured inset “album spread” */
+.mumCollageWall {
+  position: relative;
+  margin: 0 -0.25rem;
+  padding: 1.75rem 0.35rem 2.25rem;
+  border-radius: 18px;
+  background-image:
+    radial-gradient(circle at 20% 15%, rgba(255, 250, 242, 0.55) 0%, transparent 42%),
+    radial-gradient(circle at 85% 75%, rgba(230, 210, 185, 0.12) 0%, transparent 48%),
+    linear-gradient(178deg, rgba(255, 252, 246, 0.92) 0%, rgba(246, 236, 222, 0.65) 100%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.65),
+    inset 0 -1px 0 rgba(120, 90, 60, 0.06),
+    0 12px 40px rgba(62, 48, 36, 0.06);
+}
+
+@media (min-width: 768px) {
+  .mumCollageWall {
+    margin: 0;
+    padding: 2rem 1.25rem 2.75rem;
+  }
+}
+
+.mumCollageItem {
+  position: relative;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  padding-bottom: 0.25rem;
+}
+
+.mumCollageItem + .mumCollageItem {
+  margin-top: -0.35rem;
+}
+
+@media (min-width: 768px) {
+  .mumCollageItem + .mumCollageItem {
+    margin-top: -1rem;
+  }
+}
+
+.mumCollageAlignLeft {
+  justify-content: flex-start;
+  padding-left: clamp(0rem, 2vw, 1rem);
+}
+
+.mumCollageAlignRight {
+  justify-content: flex-end;
+  padding-right: clamp(0rem, 2vw, 1rem);
+}
+
+.mumCollageAlignCenter {
+  justify-content: center;
+}
+
+/* Memory card — tape (::before), optional pin (::after) */
+.mumMemoryCard {
+  position: relative;
+  appearance: none;
+  border: none;
+  padding: 0;
+  background: transparent;
+  cursor: pointer;
+  text-align: left;
+  transform: rotate(var(--memory-rotate, 0deg));
+  transition:
+    transform 0.42s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.42s ease,
+    filter 0.35s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.mumMemoryCard::before {
+  content: '';
+  position: absolute;
+  z-index: 3;
+  top: -7px;
+  left: 50%;
+  width: 44%;
+  max-width: 9.5rem;
+  height: 15px;
+  border-radius: 2px;
+  background: var(--tape);
+  box-shadow: 0 1px 3px rgba(42, 36, 28, 0.12);
+  transform: translateX(-50%) rotate(-10deg);
+  pointer-events: none;
+}
+
+.mumMemoryCardPin::after {
+  content: '';
+  position: absolute;
+  z-index: 4;
+  top: 8px;
+  right: 10px;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 32% 28%, #f8f0e4, #b89562 55%, #7a5c3a);
+  box-shadow:
+    0 1px 3px rgba(0, 0, 0, 0.28),
+    inset 0 -1px 1px rgba(0, 0, 0, 0.15);
+  pointer-events: none;
+}
+
+.mumMemoryCard:hover {
+  transform: rotate(var(--memory-rotate, 0deg)) translateY(-4px) scale(1.015);
+  filter: saturate(1.03);
+}
+
+.mumMemoryCard:active {
+  transform: rotate(var(--memory-rotate, 0deg)) translateY(-1px) scale(1.005);
+}
+
+.mumMemoryCard:focus-visible {
+  outline: 2px solid var(--md-ink);
+  outline-offset: 6px;
+}
+
+/* Variant: Polaroid & note */
+.mumVariantPolaroid,
+.mumVariantNote {
+  width: min(78vw, 22rem);
+}
+
+.mumVariantNote .mumPolaroidShell {
+  border: 1px dashed rgba(120, 92, 62, 0.28);
+}
+
+.mumPolaroidShell {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: 10px;
+  background: #fffaf2;
+  box-shadow: var(--md-shadow-soft);
+}
+
+.mumPolaroidPhoto {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  background: #eaddcf;
+}
+
+.mumPolaroidImg {
+  object-fit: cover;
+}
+
+.mumPolaroidCaption {
+  display: flex;
+  min-height: 3.35rem;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 0.65rem 0.85rem 0.95rem;
+  background: linear-gradient(to bottom, #fffdf8, #faf4ea);
+}
+
+.mumPolaroidTitle {
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.mumPolaroidDate {
+  margin-top: 0.2rem;
+  color: var(--md-ink-soft);
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+}
+
+/* Variant: Wide landscape */
+.mumVariantWide {
+  width: min(88vw, 38rem);
+}
+
+.mumWideShell {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  gap: 0;
+}
+
+.mumWidePhoto {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  border-radius: 12px 12px 4px 4px;
+  background: #eaddcf;
+  box-shadow: var(--md-shadow-soft);
+}
+
+.mumWideImg {
+  object-fit: cover;
+}
+
+.mumWideNote {
+  position: relative;
+  margin-top: -0.35rem;
+  margin-left: 0.75rem;
+  max-width: calc(100% - 1.25rem);
+  padding: 0.55rem 0.75rem 0.65rem;
+  border-radius: 8px;
+  background: #fff7ea;
+  box-shadow:
+    0 6px 18px rgba(42, 36, 28, 0.07),
+    inset 0 1px 0 rgba(255, 255, 255, 0.65);
+  transform: rotate(-1deg);
+}
+
+.mumWideNoteTitle {
+  display: block;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.mumWideNoteDate {
+  display: block;
+  margin-top: 0.15rem;
+  color: var(--md-ink-soft);
+  font-size: 0.78rem;
+}
+
+/* Variant: Small portrait */
+.mumVariantSmall {
+  width: min(68vw, 16.5rem);
+}
+
+.mumSmallShell {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: 14px;
+  background: #fffaf2;
+  box-shadow: var(--md-shadow-soft);
+}
+
+.mumSmallPhoto {
+  position: relative;
+  aspect-ratio: 3 / 4;
+  background: #eaddcf;
+}
+
+.mumSmallImg {
+  object-fit: cover;
+}
+
+.mumSmallCaption {
+  display: flex;
+  flex-direction: column;
+  padding: 0.55rem 0.65rem 0.75rem;
+  background: linear-gradient(to bottom, #fffdf8, #faf4ea);
+}
+
+.mumSmallTitle {
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.mumSmallDate {
+  margin-top: 0.15rem;
+  color: var(--md-ink-soft);
+  font-size: 0.75rem;
+}
+
+/* Letter */
+.mumLetter {
+  margin-top: 0.5rem;
+  border-radius: 16px;
+  background: rgba(255, 251, 244, 0.88);
+  padding: 2rem 1.25rem;
+  box-shadow: var(--md-shadow-soft);
+}
+
+@media (min-width: 768px) {
+  .mumLetter {
+    padding: 2.5rem 2rem;
+  }
+}
+
+.mumLetterTitle {
+  margin: 0 0 1.25rem;
+  font-size: clamp(1.25rem, 4vw, 1.5rem);
+  font-weight: 500;
+  letter-spacing: 0.04em;
+}
+
+.mumLetterBody {
+  margin: 0;
+  color: var(--md-ink-soft);
+  font-size: 1rem;
+  line-height: 1.85;
+}
+
+.mumLetterBody p + p {
+  margin-top: 1rem;
+}
+
+.mumLetterSignoff {
+  margin: 1.25rem 0 0;
+  color: var(--md-ink);
+  font-weight: 500;
+}
+
+.mumLetterFootnote {
+  margin: 2rem 0 0;
+  padding-top: 1.25rem;
+  border-top: 1px solid rgba(42, 36, 28, 0.12);
+  font-size: 0.9375rem;
+  font-style: italic;
+  line-height: 1.65;
+  color: var(--md-ink-soft);
+}
+
+/* Lightbox */
+.mumLightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: block;
+  overflow: hidden;
+  background: rgba(28, 22, 16, 0.82);
+  opacity: 0;
+  animation: mum-lightbox-in 0.45s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.mumLightboxScrim {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.mumLightboxLayer {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  height: 100%;
+  min-height: 0;
+  flex-direction: column;
+  pointer-events: none;
+}
+
+@keyframes mum-lightbox-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.mumLightboxTop {
+  display: flex;
+  flex-shrink: 0;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: calc(0.65rem + env(safe-area-inset-top)) 0.65rem 0.35rem;
+  padding-left: calc(0.65rem + env(safe-area-inset-left));
+  padding-right: calc(0.65rem + env(safe-area-inset-right));
+  pointer-events: auto;
+}
+
+.mumLightboxClose {
+  min-width: 4rem;
+  padding: 0.45rem 0.85rem;
+  border: none;
+  border-radius: 999px;
+  background: rgba(255, 253, 249, 0.14);
+  color: #f5f0e8;
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.mumLightboxClose:hover {
+  background: rgba(255, 253, 249, 0.24);
+}
+
+.mumLightboxDate {
+  margin-top: 0.35rem;
+  max-width: 60%;
+  color: rgba(245, 240, 232, 0.92);
+  font-size: 0.8125rem;
+  letter-spacing: 0.04em;
+  text-align: right;
+}
+
+.mumLightboxStage {
+  display: flex;
+  min-height: 0;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0 0.65rem;
+  pointer-events: none;
+}
+
+.mumLightboxImg {
+  max-height: min(76vh, 100%);
+  max-width: 100%;
+  border-radius: 12px;
+  object-fit: contain;
+  pointer-events: auto;
+}
+
+.mumLightboxCaption {
+  flex-shrink: 0;
+  width: 100%;
+  max-width: 36rem;
+  margin: 0 auto;
+  padding: 1rem 1rem calc(1.25rem + env(safe-area-inset-bottom));
+  background: linear-gradient(to top, rgba(28, 22, 16, 0.96), transparent);
+  pointer-events: auto;
+}
+
+.mumLightboxCaptionTitle {
+  margin: 0;
+  color: #faf6ef;
+  font-size: 1.125rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+}
+
+.mumLightboxCaptionText {
+  margin: 0.5rem 0 0;
+  color: rgba(250, 246, 239, 0.88);
+  font-size: 0.9375rem;
+  line-height: 1.65;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mumIntro,
+  .mumMuseum,
+  .mumMemoryCard {
+    transition-duration: 0.01ms !important;
+  }
+
+  .mumMemoryCard:hover,
+  .mumMemoryCard:active {
+    transform: rotate(var(--memory-rotate, 0deg));
+  }
+
+  .mumLightbox {
+    animation: none;
+    opacity: 1;
+  }
+}
