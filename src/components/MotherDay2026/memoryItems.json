@@ -1,0 +1,190 @@
+[
+  {
+    "id": 1,
+    "type": "photo",
+    "image": "/motherday2026/IMG_0009.jpg",
+    "title": "最近的一张",
+    "date": "现在",
+    "description": "这张其实就是很普通的自拍，但现在能一起拍照的机会没有以前那么多了，所以我想放进来。",
+    "variant": "hero",
+    "rotate": -3
+  },
+  {
+    "id": 2,
+    "type": "photo",
+    "image": "/motherday2026/IMG_0560.JPG",
+    "title": "出门前",
+    "date": "以前",
+    "description": "这张应该是出门前拍的。现在看起来挺普通，但也很像以前家里的感觉。",
+    "variant": "tall",
+    "rotate": 2
+  },
+  {
+    "id": 3,
+    "type": "photo",
+    "image": "/motherday2026/IMG_0753.jpg",
+    "title": "一起吃饭",
+    "date": "以前",
+    "description": "一家人坐在一起吃饭。以前觉得这种事很正常，现在才觉得应该多拍一点。",
+    "variant": "wide",
+    "rotate": -1
+  },
+  {
+    "id": "note-1",
+    "type": "note",
+    "text": "有些照片没有什么特别的故事，但就是舍不得删。",
+    "rotate": -2
+  },
+  {
+    "id": 4,
+    "type": "photo",
+    "image": "/motherday2026/IMG_0770.jpg",
+    "title": "一家人",
+    "date": "那一天",
+    "description": "这张大家都在。照片不一定拍得很正式，但现在看着挺舒服。",
+    "variant": "wide",
+    "rotate": 2
+  },
+  {
+    "id": 5,
+    "type": "photo",
+    "image": "/motherday2026/IMG_0831.JPG",
+    "title": "出去走走",
+    "date": "以前",
+    "description": "一起出去的时候拍的。那时候没觉得有什么特别，现在看就是一段回忆。",
+    "variant": "polaroid",
+    "rotate": -2
+  },
+  {
+    "id": 6,
+    "type": "photo",
+    "image": "/motherday2026/IMG_1465.JPG",
+    "title": "冷天",
+    "date": "以前",
+    "description": "大家穿得很厚，还挤在一起拍照。这张看起来就很冷，但也挺可爱的。",
+    "variant": "wide",
+    "rotate": 3
+  },
+  {
+    "id": 7,
+    "type": "photo",
+    "image": "/motherday2026/IMG_1535.JPG",
+    "title": "坐在一起",
+    "date": "以前",
+    "description": "这张没什么特别，就是坐在一起随手拍的。但我挺喜欢这种很真实的照片。",
+    "variant": "polaroid",
+    "rotate": -3
+  },
+  {
+    "id": 8,
+    "type": "photo",
+    "image": "/motherday2026/IMG_1989.JPG",
+    "title": "散步",
+    "date": "平时",
+    "description": "这张应该是出去走路的时候拍的。很普通，但看着会想起以前那些日子。",
+    "variant": "tall",
+    "rotate": 2
+  },
+  {
+    "id": 9,
+    "type": "photo",
+    "image": "/motherday2026/IMG_1997.JPG",
+    "title": "有点好笑",
+    "date": "以前",
+    "description": "这张角度很随意，也有点好笑。反正很像我们家会拍出来的照片。",
+    "variant": "polaroid",
+    "rotate": -1
+  },
+  {
+    "id": "note-2",
+    "type": "note",
+    "text": "很多回忆其实不是大事，就是这些小瞬间。",
+    "rotate": 2
+  },
+  {
+    "id": 10,
+    "type": "photo",
+    "image": "/motherday2026/IMG_2101.JPG",
+    "title": "妈妈本人",
+    "date": "平时",
+    "description": "这张一定要放。感觉很像你平时突然搞笑一下的样子。",
+    "variant": "tall",
+    "rotate": 3
+  },
+  {
+    "id": 11,
+    "type": "photo",
+    "image": "/motherday2026/IMG_2177.JPG",
+    "title": "以前",
+    "date": "上学的时候",
+    "description": "这张应该是以前上学的时候拍的。现在看会觉得，那时候我真的还挺小。",
+    "variant": "wide",
+    "rotate": -2
+  },
+  {
+    "id": 12,
+    "type": "photo",
+    "image": "/motherday2026/IMG_2416.JPG",
+    "title": "骑车",
+    "date": "那时候",
+    "description": "一起骑车出去的时候拍的。其实去哪儿不重要，能一起出去就挺好。",
+    "variant": "polaroid",
+    "rotate": 1
+  },
+  {
+    "id": 13,
+    "type": "photo",
+    "image": "/motherday2026/IMG_2534.jpg",
+    "title": "笑起来",
+    "date": "家里",
+    "description": "这张很自然，也挺好笑。家里很多开心的瞬间就是这样突然出现的。",
+    "variant": "wide",
+    "rotate": -2
+  },
+  {
+    "id": 14,
+    "type": "photo",
+    "image": "/motherday2026/IMG_2809.jpg",
+    "title": "生日",
+    "date": "生日那天",
+    "description": "一家人一起吃饭，然后拍一张照。以后这种照片应该多留一点。",
+    "variant": "hero",
+    "rotate": 2
+  },
+  {
+    "id": 15,
+    "type": "photo",
+    "image": "/motherday2026/IMG_2832.jpg",
+    "title": "长大以后",
+    "date": "最近几年",
+    "description": "这张能看出来大家都长大了。感觉时间过得挺快的。",
+    "variant": "wide",
+    "rotate": -1
+  },
+  {
+    "id": 16,
+    "type": "photo",
+    "image": "/motherday2026/IMG_3237.JPG",
+    "title": "酷妈妈",
+    "date": "某一天",
+    "description": "这张太酷了，必须放进来。以后应该多拍一点这种照片。",
+    "variant": "hero",
+    "rotate": 3
+  },
+  {
+    "id": 17,
+    "type": "photo",
+    "image": "/motherday2026/IMG_3834.jpg",
+    "title": "现在的我们",
+    "date": "现在",
+    "description": "这张是比较新的照片。大家都变了很多，但还是一家人坐在一起。",
+    "variant": "wide",
+    "rotate": -3
+  },
+  {
+    "id": "note-3",
+    "type": "note",
+    "text": "以后我再慢慢往这里加新的照片。",
+    "rotate": 1
+  }
+]
