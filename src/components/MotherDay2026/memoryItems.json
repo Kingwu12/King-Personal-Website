@@ -1,24 +1,24 @@
 [
   {
-  "id": 1,
-  "type": "photo",
-  "image": "/motherday2026/IMG_0009.jpg",
-  "title": "第一次去 Monash",
-  "date": "很久以前",
-  "description": "第一次去 Monash 的时候拍的。那时候应该也没想到，我后来会在那里读这么多年。",
-  "variant": "hero",
-  "rotate": -3
-},
+    "id": 1,
+    "type": "photo",
+    "image": "/motherday2026/IMG_0009.jpg",
+    "title": "第一次去 Monash",
+    "date": "很久以前",
+    "description": "第一次去 Monash 的时候拍的。那时候应该也没想到，我后来会在那里读这么多年。",
+    "variant": "hero",
+    "rotate": -3
+  },
   {
-  "id": 2,
-  "type": "photo",
-  "image": "/motherday2026/IMG_0560.JPG",
-  "title": "上学前",
-  "date": "Carey 那时候",
-  "description": "以前上学出门前，经常会突然拍一张这种照片。现在看真的感觉过去很久了。",
-  "variant": "tall",
-  "rotate": 2
-},
+    "id": 2,
+    "type": "photo",
+    "image": "/motherday2026/IMG_0560.JPG",
+    "title": "上学前",
+    "date": "Carey 那时候",
+    "description": "以前上学出门前，经常会突然拍一张这种照片。现在看真的感觉过去很久了。",
+    "variant": "tall",
+    "rotate": 2
+  },
   {
     "id": 3,
     "type": "photo",
@@ -36,35 +36,35 @@
     "rotate": -2
   },
   {
-  "id": 4,
-  "type": "photo",
-  "image": "/motherday2026/IMG_0770.jpg",
-  "title": "一起拍一张",
-  "date": "以前",
-  "description": "那天大家刚好都在，就顺手拍了一张这种照片。",
-  "variant": "wide",
-  "rotate": 2
-},
- {
-  "id": 5,
-  "type": "photo",
-  "image": "/motherday2026/IMG_0831.JPG",
-  "title": "半睁眼旅行照",
-  "date": "旅行的时候",
-  "description": "这张背景好像挺正式的，结果你眼睛半睁着，反而变成了我最想放进来的一张。",
-  "variant": "polaroid",
-  "rotate": -2
-},
+    "id": 4,
+    "type": "photo",
+    "image": "/motherday2026/IMG_0770.jpg",
+    "title": "一起拍一张",
+    "date": "以前",
+    "description": "那天大家刚好都在，就顺手拍了一张这种照片。",
+    "variant": "wide",
+    "rotate": 2
+  },
   {
-  "id": 6,
-  "type": "photo",
-  "image": "/motherday2026/IMG_1465.JPG",
-  "title": "去看雪的时候",
-  "date": "冬天",
-  "description": "去山上看雪的时候拍的。大家穿得圆圆的，现在看还有点好笑。",
-  "variant": "wide",
-  "rotate": 3
-},
+    "id": 5,
+    "type": "photo",
+    "image": "/motherday2026/IMG_0831.JPG",
+    "title": "半睁眼旅行照",
+    "date": "旅行的时候",
+    "description": "这张背景好像挺正式的，结果你眼睛半睁着，反而变成了我最想放进来的一张。",
+    "variant": "polaroid",
+    "rotate": -2
+  },
+  {
+    "id": 6,
+    "type": "photo",
+    "image": "/motherday2026/IMG_1465.JPG",
+    "title": "去看雪的时候",
+    "date": "冬天",
+    "description": "去山上看雪的时候拍的。大家穿得圆圆的，现在看还有点好笑。",
+    "variant": "wide",
+    "rotate": 3
+  },
   {
     "id": "chapter-previous",
     "type": "divider",
@@ -72,25 +72,25 @@
     "rotate": -2
   },
   {
-  "id": 13,
-  "type": "photo",
-  "image": "/motherday2026/IMG_2534.jpg",
-  "title": "生日晚餐",
-  "date": "那一年",
-  "description": "帮你过生日的时候拍的。现在看这张照片，还是会想到那天晚上的感觉。",
-  "variant": "wide",
-  "rotate": -2
-},
+    "id": 13,
+    "type": "photo",
+    "image": "/motherday2026/IMG_2534.jpg",
+    "title": "生日晚餐",
+    "date": "那一年",
+    "description": "帮你过生日的时候拍的。现在看这张照片，还是会想到那天晚上的感觉。",
+    "variant": "wide",
+    "rotate": -2
+  },
   {
-  "id": 8,
-  "type": "photo",
-  "image": "/motherday2026/IMG_1989.JPG",
-  "title": "河边散步",
-  "date": "在中国",
-  "description": "在中国河边走路的时候，妹妹拿我手机拍的。现在看还挺像那时候的感觉。",
-  "variant": "tall",
-  "rotate": 2
-},
+    "id": 8,
+    "type": "photo",
+    "image": "/motherday2026/IMG_1989.JPG",
+    "title": "河边散步",
+    "date": "在中国",
+    "description": "在中国河边走路的时候，妹妹拿我手机拍的。现在看还挺像那时候的感觉。",
+    "variant": "tall",
+    "rotate": 2
+  },
   {
     "id": 9,
     "type": "photo",
@@ -108,15 +108,15 @@
     "rotate": 2
   },
   {
-  "id": 10,
-  "type": "photo",
-  "image": "/motherday2026/IMG_2101.JPG",
-  "title": "妈妈本人",
-  "date": "以前",
-  "description": "这张真的很好笑，很像你平时突然乱玩一下的时候。",
-  "variant": "tall",
-  "rotate": 3
-},
+    "id": 10,
+    "type": "photo",
+    "image": "/motherday2026/IMG_2101.JPG",
+    "title": "妈妈本人",
+    "date": "以前",
+    "description": "这张真的很好笑，很像你平时突然乱玩一下的时候。",
+    "variant": "tall",
+    "rotate": 3
+  },
   {
     "id": "chapter-daily",
     "type": "divider",
@@ -145,45 +145,45 @@
   },
 
   {
-  "id": 14,
-  "type": "photo",
-  "image": "/motherday2026/IMG_2809.jpg",
-  "title": "骑车的时候",
-  "date": "以前",
-  "description": "一起骑车的时候拍的。现在已经很少会这样停下来拍照了。",
-  "variant": "hero",
-  "rotate": 2
-},
+    "id": 14,
+    "type": "photo",
+    "image": "/motherday2026/IMG_2809.jpg",
+    "title": "骑车的时候",
+    "date": "以前",
+    "description": "一起骑车的时候拍的。现在已经很少会这样停下来拍照了。",
+    "variant": "hero",
+    "rotate": 2
+  },
   {
-  "id": 15,
-  "type": "photo",
-  "image": "/motherday2026/IMG_2832.jpg",
-  "title": "搞怪一下",
-  "date": "在家",
-  "description": "突然回头做了个表情，就顺手拍下来了。现在看还是很好笑。",
-  "variant": "wide",
-  "rotate": -1
-},
+    "id": 15,
+    "type": "photo",
+    "image": "/motherday2026/IMG_2832.jpg",
+    "title": "搞怪一下",
+    "date": "在家",
+    "description": "突然回头做了个表情，就顺手拍下来了。现在看还是很好笑。",
+    "variant": "wide",
+    "rotate": -1
+  },
   {
-  "id": 16,
-  "type": "photo",
-  "image": "/motherday2026/IMG_3237.JPG",
-  "title": "生日",
-  "date": "那天",
-  "description": "那天给你过生日的时候拍的。大家在家里一起吃饭，感觉挺好。",
-  "variant": "hero",
-  "rotate": 3
-},
+    "id": 16,
+    "type": "photo",
+    "image": "/motherday2026/IMG_3237.JPG",
+    "title": "生日",
+    "date": "那天",
+    "description": "那天给你过生日的时候拍的。大家在家里一起吃饭，感觉挺好。",
+    "variant": "hero",
+    "rotate": 3
+  },
   {
-  "id": 17,
-  "type": "photo",
-  "image": "/motherday2026/IMG_3834.jpg",
-  "title": "第一次买摩托车",
-  "date": "那一天",
-  "description": "第一次去买摩托车的时候拍的。你还先坐上去试了一下。",
-  "variant": "wide",
-  "rotate": -3
-},
+    "id": 17,
+    "type": "photo",
+    "image": "/motherday2026/IMG_3834.jpg",
+    "title": "第一次买摩托车",
+    "date": "那一天",
+    "description": "第一次去买摩托车的时候拍的。你还先坐上去试了一下。",
+    "variant": "wide",
+    "rotate": -3
+  },
   {
     "id": "chapter-now",
     "type": "divider",
@@ -197,13 +197,13 @@
     "rotate": 1
   },
   {
-  "id": 18,
-  "type": "photo",
-  "image": "/motherday2026/image.jpg",
-  "title": "最近的一次",
-  "date": "中国",
-  "description": "这次回中国拍的。现在大家都长大了，能这样一起出来拍照的时候也越来越少了。",
-  "variant": "hero",
-  "rotate": 1
-}
+    "id": 18,
+    "type": "photo",
+    "image": "/motherday2026/image.jpg",
+    "title": "最近的一次",
+    "date": "中国",
+    "description": "这次回中国拍的。现在大家都长大了，能这样一起出来拍照的时候也越来越少了。",
+    "variant": "hero",
+    "rotate": 1
+  }
 ]

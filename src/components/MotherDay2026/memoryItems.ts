@@ -4,13 +4,13 @@
  * 类型：`photo` | `note` | `divider`（章节小标签）；便签与 divider 不会打开灯箱。
  */
 
-import rawMemoryItems from './memoryItems.json';
+import rawMemoryItems from "./memoryItems.json";
 
-export type PhotoVariant = 'hero' | 'wide' | 'polaroid' | 'small' | 'tall';
+export type PhotoVariant = "hero" | "wide" | "polaroid" | "small" | "tall";
 
 export type MemoryPhotoItem = {
   id: number;
-  type: 'photo';
+  type: "photo";
   image: string;
   title: string;
   date: string;
@@ -21,7 +21,7 @@ export type MemoryPhotoItem = {
 
 export type MemoryNoteItem = {
   id: string;
-  type: 'note';
+  type: "note";
   text: string;
   rotate: number;
 };
@@ -29,7 +29,7 @@ export type MemoryNoteItem = {
 /** Tiny chapter label strip in the masonry flow. */
 export type MemoryDividerItem = {
   id: string;
-  type: 'divider';
+  type: "divider";
   text: string;
   rotate: number;
 };
@@ -42,7 +42,7 @@ export type MemoryItem = MemoryPhotoItem | MemoryNoteItem | MemoryDividerItem;
  */
 export type MemoryItemJsonRow = {
   id: string | number;
-  type: 'photo' | 'note' | 'divider';
+  type: "photo" | "note" | "divider";
   image?: string;
   title?: string;
   date?: string;

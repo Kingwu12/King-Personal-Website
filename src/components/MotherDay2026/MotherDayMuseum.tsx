@@ -1,5 +1,5 @@
-import classNames from 'classnames';
-import Image from 'next/image';
+import classNames from "classnames";
+import Image from "next/image";
 import {
   type CSSProperties,
   memo,
@@ -9,7 +9,7 @@ import {
   useId,
   useRef,
   useState,
-} from 'react';
+} from "react";
 
 import {
   type MemoryDividerItem,
@@ -18,8 +18,8 @@ import {
   type MemoryPhotoItem,
   type PhotoModalPayload,
   type PhotoVariant,
-} from './memoryItems';
-import styles from './motherday2026.module.css';
+} from "./memoryItems";
+import styles from "./motherday2026.module.css";
 
 const variantClass: Record<PhotoVariant, string> = {
   hero: styles.mumVariantHero,
@@ -37,7 +37,7 @@ const tapePositionClass = [
 
 /** Occasional tiny handwritten labels on cards — not every slot. */
 const getScrapLabelForPhotoId = (id: number): string | undefined =>
-  ['', '留下', '', '记得', '', '家', ''][id % 7] || undefined;
+  ["", "留下", "", "记得", "", "家", ""][id % 7] || undefined;
 
 const ScrapbookPhotoButton = memo(function ScrapbookPhotoButton({
   item,
@@ -46,14 +46,14 @@ const ScrapbookPhotoButton = memo(function ScrapbookPhotoButton({
   item: MemoryPhotoItem;
   onOpen: (p: PhotoModalPayload) => void;
 }): ReactElement {
-  const variant: PhotoVariant = item.variant ?? 'polaroid';
-  const pin = typeof item.id === 'number' && item.id % 3 === 0;
+  const variant: PhotoVariant = item.variant ?? "polaroid";
+  const pin = typeof item.id === "number" && item.id % 3 === 0;
   const tapeClass = tapePositionClass[item.id % tapePositionClass.length];
   const scrap = getScrapLabelForPhotoId(item.id);
 
-  const imageSrc = item.image ?? '';
-  const title = item.title ?? '';
-  const date = item.date ?? '';
+  const imageSrc = item.image ?? "";
+  const title = item.title ?? "";
+  const date = item.date ?? "";
 
   const img = (
     <Image
@@ -75,7 +75,7 @@ const ScrapbookPhotoButton = memo(function ScrapbookPhotoButton({
   let inner: ReactElement;
 
   switch (variant) {
-    case 'hero':
+    case "hero":
       inner = (
         <>
           <div className={styles.mumAspectHero}>{img}</div>
@@ -83,7 +83,7 @@ const ScrapbookPhotoButton = memo(function ScrapbookPhotoButton({
         </>
       );
       break;
-    case 'wide':
+    case "wide":
       inner = (
         <>
           <div className={styles.mumAspectWide}>{img}</div>
@@ -91,7 +91,7 @@ const ScrapbookPhotoButton = memo(function ScrapbookPhotoButton({
         </>
       );
       break;
-    case 'tall':
+    case "tall":
       inner = (
         <>
           <div className={styles.mumAspectTall}>{img}</div>
@@ -99,7 +99,7 @@ const ScrapbookPhotoButton = memo(function ScrapbookPhotoButton({
         </>
       );
       break;
-    case 'small':
+    case "small":
       inner = (
         <>
           <div className={styles.mumAspectSmall}>{img}</div>
@@ -107,7 +107,7 @@ const ScrapbookPhotoButton = memo(function ScrapbookPhotoButton({
         </>
       );
       break;
-    case 'polaroid':
+    case "polaroid":
       inner = (
         <div className={styles.mumPolaroidCard}>
           <div className={styles.mumAspectPolaroidImg}>{img}</div>
@@ -121,7 +121,7 @@ const ScrapbookPhotoButton = memo(function ScrapbookPhotoButton({
     <button
       className={classNames(
         styles.mumMemoryCard,
-        variant !== 'polaroid' && styles.mumPhotoCardShell,
+        variant !== "polaroid" && styles.mumPhotoCardShell,
         variantClass[variant],
         tapeClass,
         pin && styles.mumMemoryCardPin,
@@ -132,17 +132,19 @@ const ScrapbookPhotoButton = memo(function ScrapbookPhotoButton({
           image: imageSrc,
           title,
           date,
-          description: item.description ?? '',
+          description: item.description ?? "",
         })
       }
-      type="button">
+      type="button"
+    >
       {inner}
       {scrap ? (
         <span
           className={classNames(
             styles.mumScrapLabel,
-            variant === 'polaroid' && styles.mumScrapLabelPolaroid,
-          )}>
+            variant === "polaroid" && styles.mumScrapLabelPolaroid,
+          )}
+        >
           {scrap}
         </span>
       ) : null}
@@ -150,22 +152,30 @@ const ScrapbookPhotoButton = memo(function ScrapbookPhotoButton({
   );
 });
 
-ScrapbookPhotoButton.displayName = 'ScrapbookPhotoButton';
+ScrapbookPhotoButton.displayName = "ScrapbookPhotoButton";
 
-const ScrapbookNote = memo(function ScrapbookNote({item}: {item: MemoryNoteItem}): ReactElement {
+const ScrapbookNote = memo(function ScrapbookNote({
+  item,
+}: {
+  item: MemoryNoteItem;
+}): ReactElement {
   return (
     <div className={styles.mumNoteCard}>
       <span aria-hidden className={styles.mumNoteHeart}>
         ♡
       </span>
-      <p className={styles.mumNoteText}>{item.text ?? ''}</p>
+      <p className={styles.mumNoteText}>{item.text ?? ""}</p>
     </div>
   );
 });
 
-ScrapbookNote.displayName = 'ScrapbookNote';
+ScrapbookNote.displayName = "ScrapbookNote";
 
-const ScrapbookDivider = memo(function ScrapbookDivider({item}: {item: MemoryDividerItem}): ReactElement {
+const ScrapbookDivider = memo(function ScrapbookDivider({
+  item,
+}: {
+  item: MemoryDividerItem;
+}): ReactElement {
   return (
     <div className={styles.mumChapterStrip}>
       <span className={styles.mumChapterStripInner}>{item.text}</span>
@@ -173,39 +183,64 @@ const ScrapbookDivider = memo(function ScrapbookDivider({item}: {item: MemoryDiv
   );
 });
 
-ScrapbookDivider.displayName = 'ScrapbookDivider';
+ScrapbookDivider.displayName = "ScrapbookDivider";
 
-const FloatingMemoryParticles = memo(function FloatingMemoryParticles(): ReactElement {
-  const glyphs = ['♡', '✦', '·', '心', '♡', '✦', '·', '♡', '✦', '心', '·', '♡'] as const;
-  return (
-    <div aria-hidden className={classNames(styles.floatingMemoryParticles, 'floating-memory-particles')}>
-      {glyphs.map((g, i) => (
-        <span className={styles.floatingMemoryParticle} key={`fp-${i}`} style={{'--fp-i': i} as CSSProperties}>
-          {g}
-        </span>
-      ))}
-    </div>
-  );
-});
+const FloatingMemoryParticles = memo(
+  function FloatingMemoryParticles(): ReactElement {
+    const glyphs = [
+      "♡",
+      "✦",
+      "·",
+      "心",
+      "♡",
+      "✦",
+      "·",
+      "♡",
+      "✦",
+      "心",
+      "·",
+      "♡",
+    ] as const;
+    return (
+      <div
+        aria-hidden
+        className={classNames(
+          styles.floatingMemoryParticles,
+          "floating-memory-particles",
+        )}
+      >
+        {glyphs.map((g, i) => (
+          <span
+            className={styles.floatingMemoryParticle}
+            key={`fp-${i}`}
+            style={{"--fp-i": i} as CSSProperties}
+          >
+            {g}
+          </span>
+        ))}
+      </div>
+    );
+  },
+);
 
-FloatingMemoryParticles.displayName = 'FloatingMemoryParticles';
+FloatingMemoryParticles.displayName = "FloatingMemoryParticles";
 
-type TransitionStage = 'idle' | 'opening' | 'entered';
+type TransitionStage = "idle" | "opening" | "done";
 
 const MEMORY_HEART_PATH =
-  'M250 410 C120 310 45 230 70 135 C88 65 170 45 250 130 C330 45 412 65 430 135 C455 230 380 310 250 410 Z';
+  "M250 410 C120 310 45 230 70 135 C88 65 170 45 250 130 C330 45 412 65 430 135 C455 230 380 310 250 410 Z";
 
 const OPENING_DURATION_MS = 3200;
 
 /** Very faint hearts only on the intro screen */
 const INTRO_AMBIENT_HEARTS = [
-  {g: '♡', top: '16%', left: '11%', delay: '0s', dur: '24s'},
-  {g: '♥', top: '22%', left: '79%', delay: '-4s', dur: '26s'},
-  {g: '心', top: '44%', left: '8%', delay: '-8s', dur: '22s'},
-  {g: '♡', top: '58%', left: '82%', delay: '-2s', dur: '28s'},
-  {g: '♡', top: '72%', left: '18%', delay: '-12s', dur: '25s'},
-  {g: '♥', top: '34%', left: '44%', delay: '-6s', dur: '30s'},
-  {g: '♡', top: '12%', left: '62%', delay: '-10s', dur: '23s'},
+  {g: "♡", top: "16%", left: "11%", delay: "0s", dur: "24s"},
+  {g: "♥", top: "22%", left: "79%", delay: "-4s", dur: "26s"},
+  {g: "心", top: "44%", left: "8%", delay: "-8s", dur: "22s"},
+  {g: "♡", top: "58%", left: "82%", delay: "-2s", dur: "28s"},
+  {g: "♡", top: "72%", left: "18%", delay: "-12s", dur: "25s"},
+  {g: "♥", top: "34%", left: "44%", delay: "-6s", dur: "30s"},
+  {g: "♡", top: "12%", left: "62%", delay: "-10s", dur: "23s"},
 ] as const;
 
 const staggerClass = [
@@ -216,11 +251,13 @@ const staggerClass = [
   styles.mumScrapStagger4,
 ] as const;
 
-const BG_MUSIC_SRC = '/motherday2026/background-music.mp3';
+const BG_MUSIC_SRC = "/motherday2026/background-music.mp3";
 const BG_MUSIC_VOLUME = 0.28;
 
 const MotherDayMuseum = memo(() => {
-  const [transitionStage, setTransitionStage] = useState<TransitionStage>('idle');
+  const [hasEntered, setHasEntered] = useState(false);
+  const [transitionStage, setTransitionStage] =
+    useState<TransitionStage>("idle");
   const [musicMuted, setMusicMuted] = useState(false);
   const [active, setActive] = useState<PhotoModalPayload | null>(null);
   const titleId = useId();
@@ -229,7 +266,7 @@ const MotherDayMuseum = memo(() => {
   const openingTimerRef = useRef<number | null>(null);
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
-  const entered = transitionStage === 'entered';
+  const revealComplete = transitionStage === "done";
 
   const open = useCallback((memory: PhotoModalPayload) => {
     setActive(memory);
@@ -240,7 +277,7 @@ const MotherDayMuseum = memo(() => {
   }, []);
 
   const handleIntroEnter = useCallback(() => {
-    if (transitionStage !== 'idle' || introEnterLockRef.current) {
+    if (transitionStage !== "idle" || introEnterLockRef.current) {
       return;
     }
     introEnterLockRef.current = true;
@@ -251,17 +288,19 @@ const MotherDayMuseum = memo(() => {
     }
 
     const reduceMotion =
-      typeof window !== 'undefined' &&
-      window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      typeof window !== "undefined" &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    setHasEntered(true);
 
     if (reduceMotion) {
-      setTransitionStage('entered');
+      setTransitionStage("done");
       return;
     }
 
-    setTransitionStage('opening');
+    setTransitionStage("opening");
     const timerId = window.setTimeout(() => {
-      setTransitionStage('entered');
+      setTransitionStage("done");
       openingTimerRef.current = null;
     }, OPENING_DURATION_MS);
     openingTimerRef.current = timerId as number;
@@ -297,18 +336,18 @@ const MotherDayMuseum = memo(() => {
     }
 
     const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') {
+      if (event.key === "Escape") {
         close();
       }
     };
 
     const previousOverflow = document.body.style.overflow;
-    document.body.style.overflow = 'hidden';
-    window.addEventListener('keydown', onKeyDown);
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", onKeyDown);
 
     return () => {
       document.body.style.overflow = previousOverflow;
-      window.removeEventListener('keydown', onKeyDown);
+      window.removeEventListener("keydown", onKeyDown);
     };
   }, [active, close]);
 
@@ -318,7 +357,7 @@ const MotherDayMuseum = memo(() => {
 
       <FloatingMemoryParticles />
 
-      {transitionStage === 'opening' ? (
+      {transitionStage === "opening" ? (
         <div aria-hidden className={styles.memoryOpeningTransition}>
           <div className={styles.memoryWarmGlow} />
 
@@ -333,12 +372,42 @@ const MotherDayMuseum = memo(() => {
           <div className={styles.memoryHeartFill} />
 
           <div className={styles.memoryPhotoBurst}>
-            <span className={classNames(styles.memoryMiniPhoto, styles.memoryMiniPhotoA)} />
-            <span className={classNames(styles.memoryMiniPhoto, styles.memoryMiniPhotoB)} />
-            <span className={classNames(styles.memoryMiniPhoto, styles.memoryMiniPhotoC)} />
-            <span className={classNames(styles.memoryMiniPhoto, styles.memoryMiniPhotoD)} />
-            <span className={classNames(styles.memoryMiniPhoto, styles.memoryMiniPhotoE)} />
-            <span className={classNames(styles.memoryMiniPhoto, styles.memoryMiniPhotoF)} />
+            <span
+              className={classNames(
+                styles.memoryMiniPhoto,
+                styles.memoryMiniPhotoA,
+              )}
+            />
+            <span
+              className={classNames(
+                styles.memoryMiniPhoto,
+                styles.memoryMiniPhotoB,
+              )}
+            />
+            <span
+              className={classNames(
+                styles.memoryMiniPhoto,
+                styles.memoryMiniPhotoC,
+              )}
+            />
+            <span
+              className={classNames(
+                styles.memoryMiniPhoto,
+                styles.memoryMiniPhotoD,
+              )}
+            />
+            <span
+              className={classNames(
+                styles.memoryMiniPhoto,
+                styles.memoryMiniPhotoE,
+              )}
+            />
+            <span
+              className={classNames(
+                styles.memoryMiniPhoto,
+                styles.memoryMiniPhotoF,
+              )}
+            />
           </div>
 
           <div className={styles.memoryOpeningCopy}>
@@ -350,7 +419,11 @@ const MotherDayMuseum = memo(() => {
 
       <section
         aria-hidden={entered}
-        className={classNames(styles.mumIntro, entered && styles.mumIntroHidden)}>
+        className={classNames(
+          styles.mumIntro,
+          entered && styles.mumIntroHidden,
+        )}
+      >
         <div aria-hidden className={styles.mumIntroAmbientHearts}>
           {INTRO_AMBIENT_HEARTS.map((h, i) => (
             <span
@@ -358,34 +431,44 @@ const MotherDayMuseum = memo(() => {
               key={`intro-ambient-${i}`}
               style={
                 {
-                  '--iah-delay': h.delay,
-                  '--iah-dur': h.dur,
+                  "--iah-delay": h.delay,
+                  "--iah-dur": h.dur,
                   left: h.left,
                   top: h.top,
                 } as CSSProperties
-              }>
+              }
+            >
               {h.g}
             </span>
           ))}
         </div>
         <h1 className={styles.mumIntroTitle}>给妈妈</h1>
-        <p className={styles.mumIntroSubtitle}>一些照片，一些回忆，还有一些平时没怎么说出口的话。</p>
+        <p className={styles.mumIntroSubtitle}>
+          一些照片，一些回忆，还有一些平时没怎么说出口的话。
+        </p>
         <button
           className={styles.mumIntroBtn}
-          disabled={transitionStage !== 'idle'}
+          disabled={transitionStage !== "idle"}
           onClick={handleIntroEnter}
-          type="button">
+          type="button"
+        >
           打开看看
         </button>
       </section>
 
       <main
-        className={classNames(styles.mumMuseum, entered && styles.mumMuseumVisible)}
-        hidden={!entered}>
+        className={classNames(
+          styles.mumMuseum,
+          entered && styles.mumMuseumVisible,
+        )}
+        hidden={!entered}
+      >
         <div className={styles.mumMuseumInner}>
           <header className={styles.mumMuseumHeader}>
             <h2 className={styles.mumMuseumHeading}>回忆</h2>
-            <p className={styles.mumMuseumHandLine}>一些没有认真整理过，但舍不得删掉的照片。</p>
+            <p className={styles.mumMuseumHandLine}>
+              一些没有认真整理过，但舍不得删掉的照片。
+            </p>
             <p className={styles.mumMuseumLede}>点一下照片，可以放大看。</p>
             <span aria-hidden className={styles.mumMuseumHeart}>
               <span className={styles.mumMuseumHeartPulse}>♡</span>
@@ -398,17 +481,21 @@ const MotherDayMuseum = memo(() => {
             <div className={styles.mumMuseumMasonry}>
               {memoryItems.map((item, index) => (
                 <div
-                  className={classNames(styles.mumScrapbookItem, staggerClass[index % staggerClass.length])}
+                  className={classNames(
+                    styles.mumScrapbookItem,
+                    staggerClass[index % staggerClass.length],
+                  )}
                   key={`${item.type}-${item.id}`}
                   style={
                     {
-                      '--rotate': `${item.rotate ?? 0}deg`,
-                      '--fade-delay': `${Math.min(index, 24) * 0.045}s`,
+                      "--rotate": `${item.rotate ?? 0}deg`,
+                      "--fade-delay": `${Math.min(index, 24) * 0.045}s`,
                     } as CSSProperties
-                  }>
-                  {item.type === 'photo' ? (
+                  }
+                >
+                  {item.type === "photo" ? (
                     <ScrapbookPhotoButton item={item} onOpen={open} />
-                  ) : item.type === 'note' ? (
+                  ) : item.type === "note" ? (
                     <ScrapbookNote item={item} />
                   ) : (
                     <ScrapbookDivider item={item} />
@@ -432,12 +519,8 @@ const MotherDayMuseum = memo(() => {
               <p>
                 我平时不太会说这些话，但我知道你一直很辛苦，也一直很照顾我们。
               </p>
-              <p>
-                谢谢你这么多年一直支持我、包容我，也谢谢你一直在我身边。
-              </p>
-              <p>
-                我现在还有很多地方要做好，也希望以后能让你少操心一点。
-              </p>
+              <p>谢谢你这么多年一直支持我、包容我，也谢谢你一直在我身边。</p>
+              <p>我现在还有很多地方要做好，也希望以后能让你少操心一点。</p>
               <p>这个网站我以后会继续慢慢加照片，就当成一个小相册。</p>
               <p>母亲节快乐。</p>
               <p className={styles.mumLetterSignoff}>我爱你。</p>
@@ -453,7 +536,8 @@ const MotherDayMuseum = memo(() => {
           aria-labelledby={titleId}
           aria-modal
           className={styles.mumLightbox}
-          role="dialog">
+          role="dialog"
+        >
           <button
             aria-label="关掉"
             className={styles.mumLightboxScrim}
@@ -463,7 +547,11 @@ const MotherDayMuseum = memo(() => {
           <div className={styles.mumLightboxGlow} />
           <div className={styles.mumLightboxLayer}>
             <div className={styles.mumLightboxTop}>
-              <button className={styles.mumLightboxClose} onClick={close} type="button">
+              <button
+                className={styles.mumLightboxClose}
+                onClick={close}
+                type="button"
+              >
                 关掉
               </button>
               <p className={styles.mumLightboxDate}>{active.date}</p>
@@ -494,17 +582,18 @@ const MotherDayMuseum = memo(() => {
 
       {entered ? (
         <button
-          aria-label={musicMuted ? '开启背景音乐' : '关闭背景音乐'}
+          aria-label={musicMuted ? "开启背景音乐" : "关闭背景音乐"}
           className={styles.mumMusicToggle}
           onClick={toggleBackgroundMusic}
-          type="button">
-          {musicMuted ? '音乐开' : '音乐关'}
+          type="button"
+        >
+          {musicMuted ? "音乐开" : "音乐关"}
         </button>
       ) : null}
     </div>
   );
 });
 
-MotherDayMuseum.displayName = 'MotherDayMuseum';
+MotherDayMuseum.displayName = "MotherDayMuseum";
 
 export default MotherDayMuseum;
