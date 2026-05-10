@@ -1,8 +1,7 @@
 /**
  * 每条一页：编辑文案与 variant / rotate；照片路径见 memoryItems.json。
- * 图片必须是 `public/motherday2026/` 下的真实文件名（大小写与磁盘一致），例如 `/motherday2026/IMG_0009.jpg`。
- * 当前共 28 条（24 张照片 + 4 张便签）；便签不会打开灯箱。
- * 若仓库里少于 24 张独立照片，JSON 里靠后的条目可以指向已有文件（路径重复），补齐后再改成新文件名即可。
+ * 图片必须是 `public/motherday2026/` 下的真实文件名（大小写与磁盘一致）。
+ * 类型：`photo` | `note` | `divider`（章节小标签）；便签与 divider 不会打开灯箱。
  */
 
 import rawMemoryItems from './memoryItems.json';
@@ -27,15 +26,23 @@ export type MemoryNoteItem = {
   rotate: number;
 };
 
+/** Tiny chapter label strip in the masonry flow. */
+export type MemoryDividerItem = {
+  id: string;
+  type: 'divider';
+  text: string;
+  rotate: number;
+};
+
 /** Discriminated union used by the gallery (narrowing on `type`). */
-export type MemoryItem = MemoryPhotoItem | MemoryNoteItem;
+export type MemoryItem = MemoryPhotoItem | MemoryNoteItem | MemoryDividerItem;
 
 /**
  * Flat row shape for JSON editing; photo rows use numeric `id`, notes use string ids.
  */
 export type MemoryItemJsonRow = {
   id: string | number;
-  type: 'photo' | 'note';
+  type: 'photo' | 'note' | 'divider';
   image?: string;
   title?: string;
   date?: string;

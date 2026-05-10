@@ -1,37 +1,104 @@
 /**
  * Mother’s Day — scrapbook / collage (CSS Module).
- * Palette: `--paper-*` / `--md-*` on `.mumRoot`.
+ * Warm handmade wall; palette on `.mumRoot`.
  */
 
+@keyframes floatMemory {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+    opacity: 0.12;
+  }
+
+  33% {
+    transform: translate3d(6px, -10px, 0) rotate(4deg);
+    opacity: 0.18;
+  }
+
+  66% {
+    transform: translate3d(-5px, 6px, 0) rotate(-3deg);
+    opacity: 0.15;
+  }
+}
+
+@keyframes fadeUpSoft {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 14px, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes heartBeat {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+@keyframes paperDrift {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  50% {
+    transform: translate3d(1px, -2px, 0);
+  }
+}
+
 .mumRoot {
-  --md-cream: #f6efe4;
-  --md-cream-deep: #e8dcc8;
-  --md-ink: #2a241c;
-  --md-ink-soft: rgba(42, 36, 28, 0.72);
-  --paper-base: #faf3e8;
-  --paper-grain: rgba(120, 92, 62, 0.04);
-  --md-shadow: 0 14px 36px rgba(42, 36, 28, 0.1);
-  --md-shadow-soft: 0 8px 28px rgba(42, 36, 28, 0.07);
-  --tape: rgba(232, 214, 188, 0.58);
+  --md-cream: #f7f0e6;
+  --md-cream-deep: #ead9c4;
+  --md-ink: #2c241c;
+  --md-ink-soft: rgba(42, 34, 26, 0.76);
+  --paper-base: #fcf6ec;
+  --paper-grain: rgba(130, 88, 62, 0.045);
+  --paper-blush: rgba(255, 185, 165, 0.09);
+  --paper-glow: rgba(255, 210, 170, 0.11);
+  --md-shadow: 0 16px 42px rgba(48, 34, 24, 0.11);
+  --md-shadow-soft: 0 10px 32px rgba(48, 34, 24, 0.08);
+  --md-shadow-warm: 0 12px 28px rgba(120, 72, 48, 0.14);
+  --tape: rgba(235, 218, 188, 0.62);
+  --tape-deep: rgba(210, 185, 148, 0.45);
 
   position: relative;
+  isolation: isolate;
   min-height: 100vh;
   min-height: 100dvh;
   overflow-x: hidden;
   background-color: var(--paper-base);
   background-image:
-    radial-gradient(ellipse 120% 80% at 50% -15%, #fffdf8 0%, transparent 55%),
-    radial-gradient(circle at 12% 22%, var(--paper-grain) 0%, transparent 42%),
-    radial-gradient(circle at 88% 58%, var(--paper-grain) 0%, transparent 38%),
-    radial-gradient(circle at 40% 88%, rgba(180, 140, 100, 0.03) 0%, transparent 45%),
+    radial-gradient(ellipse 95% 55% at 50% -8%, #fffefb 0%, transparent 52%),
+    radial-gradient(ellipse 55% 42% at 8% 35%, var(--paper-blush) 0%, transparent 58%),
+    radial-gradient(ellipse 48% 40% at 92% 28%, var(--paper-glow) 0%, transparent 55%),
+    radial-gradient(circle at 18% 78%, rgba(255, 175, 155, 0.06) 0%, transparent 48%),
+    radial-gradient(circle at 72% 88%, rgba(230, 190, 140, 0.07) 0%, transparent 46%),
+    radial-gradient(circle at 48% 52%, var(--paper-grain) 0%, transparent 38%),
     repeating-linear-gradient(
-      -8deg,
+      -12deg,
       transparent,
-      transparent 3px,
-      rgba(255, 255, 255, 0.035) 3px,
-      rgba(255, 255, 255, 0.035) 4px
+      transparent 4px,
+      rgba(255, 255, 255, 0.04) 4px,
+      rgba(255, 255, 255, 0.04) 5px
     ),
-    linear-gradient(185deg, #fdf8f0 0%, var(--md-cream) 42%, var(--md-cream-deep) 100%);
+    repeating-linear-gradient(
+      78deg,
+      transparent,
+      transparent 7px,
+      rgba(110, 82, 58, 0.018) 7px,
+      rgba(110, 82, 58, 0.018) 8px
+    ),
+    linear-gradient(188deg, #fefbf6 0%, var(--md-cream) 44%, var(--md-cream-deep) 100%);
+  box-shadow: inset 0 0 100px rgba(72, 48, 32, 0.12);
   color: var(--md-ink);
   font-family:
     system-ui,
@@ -43,15 +110,95 @@
   -webkit-font-smoothing: antialiased;
 }
 
+/* Floating decorative layer — never intercepts taps */
+.floatingMemoryParticles {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.floatingMemoryParticle {
+  position: absolute;
+  font-size: clamp(11px, 2.4vw, 15px);
+  color: rgba(160, 92, 72, 0.55);
+  opacity: 0.12;
+  animation: floatMemory 14s ease-in-out infinite;
+  animation-delay: calc(var(--fp-i, 0) * 1.15s);
+  animation-duration: calc(11s + var(--fp-i, 0) * 0.65s);
+  text-shadow: 0 0 18px rgba(255, 220, 200, 0.35);
+}
+
+.floatingMemoryParticle:nth-child(1) {
+  top: 12%;
+  left: 8%;
+}
+
+.floatingMemoryParticle:nth-child(2) {
+  top: 22%;
+  right: 12%;
+}
+
+.floatingMemoryParticle:nth-child(3) {
+  top: 38%;
+  left: 18%;
+}
+
+.floatingMemoryParticle:nth-child(4) {
+  top: 52%;
+  right: 22%;
+}
+
+.floatingMemoryParticle:nth-child(5) {
+  top: 68%;
+  left: 10%;
+}
+
+.floatingMemoryParticle:nth-child(6) {
+  top: 78%;
+  right: 8%;
+}
+
+.floatingMemoryParticle:nth-child(7) {
+  top: 18%;
+  left: 42%;
+}
+
+.floatingMemoryParticle:nth-child(8) {
+  top: 48%;
+  left: 6%;
+}
+
+.floatingMemoryParticle:nth-child(9) {
+  top: 62%;
+  right: 18%;
+}
+
+.floatingMemoryParticle:nth-child(10) {
+  top: 28%;
+  right: 38%;
+}
+
+.floatingMemoryParticle:nth-child(11) {
+  top: 72%;
+  left: 44%;
+}
+
+.floatingMemoryParticle:nth-child(12) {
+  top: 8%;
+  right: 28%;
+}
+
 .mumSans {
   font-family: inherit;
 }
 
-/* Intro */
+/* Intro — above scrapbook & particles */
 .mumIntro {
   position: fixed;
   inset: 0;
-  z-index: 20;
+  z-index: 25;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -118,10 +265,127 @@
   opacity: 0.92;
 }
 
-/* Museum */
-.mumMuseum {
+.mumIntroBtn:disabled {
+  cursor: wait;
+  opacity: 0.88;
+}
+
+/* Intro-only whisper hearts — behind title copy */
+.mumIntroAmbientHearts {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.mumIntroAmbientHeart {
+  position: absolute;
+  font-size: clamp(12px, 3.2vw, 16px);
+  color: rgba(188, 132, 118, 0.42);
+  opacity: 0.07;
+  animation: introAmbientHeartDrift var(--iah-dur, 26s) ease-in-out infinite;
+  animation-delay: var(--iah-delay, 0s);
+}
+
+.mumIntro > h1,
+.mumIntro > p,
+.mumIntro > button {
   position: relative;
   z-index: 1;
+}
+
+@keyframes introAmbientHeartDrift {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(-2deg);
+    opacity: 0.055;
+  }
+
+  50% {
+    transform: translate3d(5px, -16px, 0) rotate(3deg);
+    opacity: 0.11;
+  }
+}
+
+/* Post-click burst — short, soft, non-blocking */
+@keyframes heartBurstFloat {
+  0% {
+    transform: translate3d(0, 0, 0) scale(0.62) rotate(0deg);
+    opacity: 0;
+  }
+
+  17% {
+    opacity: 0.88;
+  }
+
+  100% {
+    transform: translate3d(var(--hb-drift, 0px), -172px, 0) scale(1.08) rotate(var(--hb-rotate, 6deg));
+    opacity: 0;
+  }
+}
+
+.heartBurst {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  overflow: hidden;
+  pointer-events: none;
+  contain: layout style paint;
+}
+
+.heartBurstHeart {
+  position: absolute;
+  bottom: var(--hb-bottom, 34%);
+  left: var(--hb-x);
+  font-size: var(--hb-size);
+  color: var(--hb-color);
+  opacity: 0;
+  animation: heartBurstFloat 0.95s ease-out forwards;
+  animation-delay: var(--hb-delay, 0ms);
+  will-change: transform, opacity;
+}
+
+/* Background music toggle — after intro; below lightbox */
+.mumMusicToggle {
+  position: fixed;
+  right: max(0.85rem, env(safe-area-inset-right));
+  bottom: max(0.85rem, env(safe-area-inset-bottom));
+  z-index: 35;
+  appearance: none;
+  margin: 0;
+  border: 1px solid rgba(110, 82, 62, 0.14);
+  border-radius: 999px;
+  padding: 0.38rem 0.72rem;
+  background: rgba(252, 246, 236, 0.72);
+  color: rgba(72, 54, 42, 0.52);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: 0 2px 12px rgba(48, 34, 24, 0.06);
+  transition:
+    color 0.2s ease,
+    border-color 0.2s ease,
+    background 0.2s ease;
+}
+
+.mumMusicToggle:hover {
+  color: rgba(72, 54, 42, 0.72);
+  border-color: rgba(110, 82, 62, 0.22);
+  background: rgba(252, 246, 236, 0.88);
+}
+
+.mumMusicToggle:active {
+  transform: scale(0.98);
+}
+
+/* Museum — above floating particles */
+.mumMuseum {
+  position: relative;
+  z-index: 2;
   opacity: 0;
   transform: translateY(18px);
   transition:
@@ -148,7 +412,7 @@
 }
 
 .mumMuseumHeader {
-  margin-bottom: 1.75rem;
+  margin-bottom: 1.65rem;
   text-align: center;
 }
 
@@ -156,15 +420,71 @@
   margin: 0;
   font-size: clamp(1.5rem, 5vw, 1.875rem);
   font-weight: 500;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.06em;
+  opacity: 0;
+  transform: translateY(12px);
+}
+
+.mumMuseumVisible .mumMuseumHeading {
+  animation: fadeUpSoft 0.85s cubic-bezier(0.22, 1, 0.36, 1) 0.05s forwards;
+}
+
+.mumMuseumHandLine {
+  margin: 0.65rem auto 0;
+  max-width: min(22rem, 92vw);
+  color: rgba(92, 72, 58, 0.82);
+  font-family:
+    'KaiTi',
+    'STKaiti',
+    'Songti SC',
+    'SimSun',
+    serif;
+  font-size: clamp(0.88rem, 3.3vw, 1rem);
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  line-height: 1.65;
+  opacity: 0;
+  transform: translateY(12px);
+}
+
+.mumMuseumVisible .mumMuseumHandLine {
+  animation: fadeUpSoft 0.88s cubic-bezier(0.22, 1, 0.36, 1) 0.18s forwards;
 }
 
 .mumMuseumLede {
-  margin: 0.5rem auto 0;
+  margin: 0.55rem auto 0;
   max-width: 26rem;
   color: var(--md-ink-soft);
   font-size: 0.9375rem;
   line-height: 1.65;
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.mumMuseumVisible .mumMuseumLede {
+  animation: fadeUpSoft 0.85s cubic-bezier(0.22, 1, 0.36, 1) 0.32s forwards;
+}
+
+.mumMuseumHeart {
+  display: inline-block;
+  margin-top: 0.75rem;
+  font-size: 1rem;
+  color: rgba(170, 88, 82, 0.62);
+  opacity: 0;
+  transform: translateY(8px);
+}
+
+.mumMuseumVisible .mumMuseumHeart {
+  animation: fadeUpSoft 0.78s cubic-bezier(0.22, 1, 0.36, 1) 0.42s forwards;
+}
+
+.mumMuseumHeartPulse {
+  display: inline-block;
+}
+
+.mumMuseumVisible .mumMuseumHeartPulse {
+  animation: heartBeat 2.85s ease-in-out 1.15s infinite;
 }
 
 /* Decorative paper strips */
@@ -200,21 +520,22 @@
   transform: rotate(1.2deg);
 }
 
-/* Collage wall — textured tray + masonry columns */
+/* Collage wall — like a pinboard / paper tray */
 .mumCollageWall {
   position: relative;
   margin: 0;
-  padding: 0.75rem 0 1rem;
-  border-radius: 16px;
+  padding: 0.75rem 0 1.1rem;
+  border-radius: 18px;
+  animation: paperDrift 32s ease-in-out infinite;
   background-image:
-    radial-gradient(circle at 18% 12%, rgba(255, 250, 242, 0.65) 0%, transparent 46%),
-    radial-gradient(circle at 88% 72%, rgba(230, 210, 185, 0.14) 0%, transparent 48%),
-    radial-gradient(circle at 48% 92%, rgba(200, 175, 140, 0.06) 0%, transparent 42%),
-    linear-gradient(178deg, rgba(255, 252, 246, 0.95) 0%, rgba(246, 236, 222, 0.72) 100%);
+    radial-gradient(ellipse 70% 50% at 20% 8%, rgba(255, 248, 240, 0.9) 0%, transparent 50%),
+    radial-gradient(circle at 90% 18%, rgba(255, 200, 180, 0.08) 0%, transparent 45%),
+    radial-gradient(circle at 10% 70%, rgba(220, 195, 165, 0.1) 0%, transparent 48%),
+    linear-gradient(176deg, rgba(255, 252, 247, 0.98) 0%, rgba(244, 232, 214, 0.75) 100%);
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.65),
-    inset 0 -1px 0 rgba(120, 90, 60, 0.06),
-    0 10px 36px rgba(62, 48, 36, 0.07);
+    inset 0 1px 0 rgba(255, 255, 255, 0.7),
+    inset 0 -2px 0 rgba(100, 72, 48, 0.04),
+    0 12px 40px rgba(58, 42, 30, 0.08);
 }
 
 @media (min-width: 768px) {
@@ -226,14 +547,14 @@
 /* museum-masonry — document flow, no absolute layout */
 .mumMuseumMasonry {
   column-count: 2;
-  column-gap: 12px;
-  padding: 0 14px;
+  column-gap: 11px;
+  padding: 0 12px;
 }
 
 @media (min-width: 768px) {
   .mumMuseumMasonry {
     column-count: 3;
-    column-gap: 13px;
+    column-gap: 12px;
   }
 }
 
@@ -244,21 +565,79 @@
   }
 }
 
+/* Irregular vertical rhythm */
+.mumScrapStagger0 {
+  margin-bottom: 12px;
+}
+
+.mumScrapStagger1 {
+  margin-bottom: 18px;
+}
+
+.mumScrapStagger2 {
+  margin-bottom: 10px;
+}
+
+.mumScrapStagger3 {
+  margin-bottom: 20px;
+}
+
+.mumScrapStagger4 {
+  margin-bottom: 15px;
+}
+
 /* scrapbook-item */
 .mumScrapbookItem {
   display: inline-block;
   width: 100%;
-  min-width: 130px;
-  margin: 0 0 14px;
+  min-width: 0;
+  max-width: 100%;
+  margin: 0;
   break-inside: avoid;
   page-break-inside: avoid;
   transform: rotate(var(--rotate, 0deg));
   transform-origin: center center;
   vertical-align: top;
   -webkit-column-break-inside: avoid;
+  animation: fadeUpSoft 0.75s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: var(--fade-delay, 0s);
 }
 
-/* Photo button — full column width, tape + optional pin */
+@media (prefers-reduced-motion: reduce) {
+  .mumScrapbookItem {
+    animation: none;
+  }
+}
+
+/* Chapter divider — narrow paper strip */
+.mumChapterStrip {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  padding: 0.4rem 0 0.35rem;
+  break-inside: avoid;
+}
+
+.mumChapterStripInner {
+  display: inline-block;
+  padding: 0.38rem 1.15rem 0.42rem;
+  border-radius: 4px 7px 5px 6px;
+  background: linear-gradient(168deg, rgba(255, 252, 246, 0.96) 0%, rgba(232, 216, 192, 0.62) 100%);
+  color: rgba(98, 72, 56, 0.78);
+  font-family:
+    'KaiTi',
+    'STKaiti',
+    'Songti SC',
+    serif;
+  font-size: clamp(0.72rem, 2.8vw, 0.82rem);
+  letter-spacing: 0.35em;
+  box-shadow:
+    0 2px 8px rgba(42, 28, 18, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.65);
+  transform: rotate(-0.8deg);
+}
+
+/* Photo button — tape variants + optional pin */
 .mumMemoryCard {
   position: relative;
   display: flex;
@@ -271,8 +650,8 @@
   cursor: pointer;
   text-align: left;
   transition:
-    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
-    filter 0.3s ease;
+    transform 0.38s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 0.35s ease;
   -webkit-tap-highlight-color: transparent;
 }
 
@@ -286,18 +665,43 @@
   max-width: 7.5rem;
   height: 13px;
   border-radius: 2px;
-  background: var(--tape);
-  box-shadow: 0 1px 3px rgba(42, 36, 28, 0.12);
-  transform: translateX(-50%) rotate(-10deg);
+  background: linear-gradient(90deg, var(--tape-deep), var(--tape));
+  box-shadow: 0 1px 3px rgba(42, 36, 28, 0.14);
+  transform: translateX(-50%) rotate(-9deg);
   pointer-events: none;
+}
+
+/* Masked tape — top center (default class name center) */
+.mumTapeCenter.mumMemoryCard::before {
+  left: 50%;
+  width: 44%;
+  transform: translateX(-50%) rotate(-9deg);
+}
+
+/* Tape toward top-left */
+.mumTapeLeft.mumMemoryCard::before {
+  left: 22%;
+  width: 38%;
+  max-width: 6.5rem;
+  transform: translateX(-50%) rotate(-14deg);
+}
+
+/* Diagonal tape */
+.mumTapeDiagonal.mumMemoryCard::before {
+  left: 48%;
+  width: 48%;
+  max-width: 8rem;
+  height: 12px;
+  transform: translateX(-50%) rotate(22deg);
+  opacity: 0.92;
 }
 
 .mumMemoryCardPin::after {
   content: '';
   position: absolute;
   z-index: 4;
-  top: 6px;
-  right: 8px;
+  top: 7px;
+  right: 9px;
   width: 10px;
   height: 10px;
   border-radius: 50%;
@@ -308,13 +712,61 @@
   pointer-events: none;
 }
 
+/* Extra pin / tack on some masonry positions */
+.mumScrapbookItem:nth-child(5n + 2) .mumMemoryCard:not(.mumMemoryCardPin)::after {
+  content: '';
+  position: absolute;
+  z-index: 4;
+  top: 10px;
+  left: 12px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 40% 35%, #eee8dc, #a08058 60%, #6a5038);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.22);
+  pointer-events: none;
+}
+
+/* Tiny handwritten labels */
+.mumScrapLabel {
+  position: absolute;
+  z-index: 5;
+  right: 8%;
+  bottom: 10%;
+  padding: 0.12rem 0.35rem 0.15rem;
+  border-radius: 2px;
+  background: rgba(255, 252, 246, 0.82);
+  color: rgba(110, 78, 58, 0.85);
+  font-family:
+    'KaiTi',
+    'STKaiti',
+    'Songti SC',
+    serif;
+  font-size: clamp(10px, 2.8vw, 12px);
+  font-style: italic;
+  letter-spacing: 0.08em;
+  line-height: 1;
+  box-shadow: 0 1px 2px rgba(42, 28, 18, 0.12);
+  pointer-events: none;
+  transform: rotate(-6deg);
+}
+
+.mumScrapLabelPolaroid {
+  bottom: 22%;
+  right: 6%;
+}
+
 .mumScrapbookItem .mumMemoryCard:hover {
-  transform: translateY(-3px) scale(1.012);
-  filter: saturate(1.04);
+  transform: translateY(-4px) rotate(0.6deg) scale(1.006);
+  filter: saturate(1.06) brightness(1.03);
+}
+
+.mumScrapbookItem .mumMemoryCard:hover .mumPhotoCover {
+  filter: saturate(1.08) brightness(1.04);
 }
 
 .mumScrapbookItem .mumMemoryCard:active {
-  transform: translateY(-1px) scale(1.005);
+  transform: translateY(-1px) rotate(-0.3deg) scale(1.002);
 }
 
 .mumMemoryCard:focus-visible {
@@ -421,41 +873,86 @@
   width: 100%;
 }
 
-/* Standalone note cards — readable width in column */
+.mumVariantHero.mumPhotoCardShell {
+  box-shadow:
+    0 16px 42px rgba(62, 44, 32, 0.14),
+    inset 0 1px 0 rgba(255, 255, 255, 0.55);
+}
+
+.mumVariantWide.mumPhotoCardShell {
+  box-shadow:
+    0 11px 30px rgba(52, 38, 28, 0.11),
+    inset 0 1px 0 rgba(255, 255, 255, 0.48);
+}
+
+.mumVariantTall.mumPhotoCardShell {
+  box-shadow:
+    0 14px 34px rgba(58, 40, 28, 0.12),
+    2px 4px 0 rgba(180, 140, 100, 0.06);
+}
+
+.mumVariantSmall.mumPhotoCardShell {
+  box-shadow:
+    0 9px 24px rgba(48, 36, 26, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+.mumVariantPolaroid .mumPolaroidCard {
+  box-shadow:
+    0 13px 32px rgba(52, 38, 28, 0.11),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.35);
+}
+
+/* Sticky-note style quote cards */
 .mumNoteCard {
   position: relative;
   box-sizing: border-box;
   width: 100%;
-  min-width: 130px;
-  padding: 0.85rem 1rem 0.95rem;
-  border-radius: 11px 13px 12px 10px;
-  background: linear-gradient(165deg, #fffef9 0%, #f8f0e4 100%);
+  min-width: 0;
+  padding: 1rem 1rem 1.15rem;
+  border-radius: 14px 11px 16px 9px;
+  background: linear-gradient(168deg, #fff9dc 0%, #fff3b8 42%, #f8ebb8 100%);
   box-shadow:
-    0 8px 22px rgba(42, 36, 28, 0.1),
-    inset 0 1px 0 rgba(255, 255, 255, 0.75);
+    0 10px 26px rgba(72, 52, 28, 0.12),
+    2px 3px 0 rgba(200, 160, 70, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.65);
 }
 
 .mumNoteCard::before {
   content: '';
   position: absolute;
-  top: -5px;
-  left: 50%;
-  width: 40%;
-  height: 12px;
+  top: -4px;
+  left: 22%;
+  width: 42%;
+  height: 11px;
   border-radius: 2px;
-  background: rgba(228, 208, 178, 0.55);
-  box-shadow: 0 1px 2px rgba(42, 36, 28, 0.1);
-  transform: translateX(-50%) rotate(-8deg);
+  background: linear-gradient(90deg, rgba(235, 215, 175, 0.65), rgba(250, 235, 200, 0.55));
+  box-shadow: 0 1px 3px rgba(42, 28, 18, 0.12);
+  transform: rotate(-11deg);
+}
+
+.mumNoteHeart {
+  display: block;
+  margin-bottom: 0.35rem;
+  font-size: 0.95rem;
+  color: rgba(180, 92, 78, 0.55);
+  line-height: 1;
 }
 
 .mumNoteText {
   position: relative;
   margin: 0;
-  color: var(--md-ink-soft);
-  font-size: clamp(0.88rem, 3.5vw, 0.95rem);
+  color: rgba(52, 38, 26, 0.82);
+  font-family:
+    'KaiTi',
+    'STKaiti',
+    'Songti SC',
+    serif;
+  font-size: clamp(0.9rem, 3.6vw, 0.98rem);
   font-style: italic;
-  line-height: 1.6;
-  letter-spacing: 0.02em;
+  font-weight: 400;
+  line-height: 1.68;
+  letter-spacing: 0.03em;
   writing-mode: horizontal-tb;
   white-space: normal;
   word-break: normal;
@@ -510,14 +1007,18 @@
   color: var(--md-ink-soft);
 }
 
-/* Lightbox */
+/* Lightbox — warm scrim + paper caption */
 .mumLightbox {
   position: fixed;
   inset: 0;
   z-index: 50;
   display: block;
   overflow: hidden;
-  background: rgba(28, 22, 16, 0.82);
+  background:
+    radial-gradient(ellipse 90% 70% at 50% 38%, rgba(130, 82, 62, 0.42) 0%, transparent 58%),
+    radial-gradient(ellipse 140% 95% at 50% 105%, rgba(38, 26, 18, 0.72) 0%, rgba(18, 12, 9, 0.92) 65%);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
   opacity: 0;
   animation: mum-lightbox-in 0.45s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
@@ -532,9 +1033,18 @@
   cursor: pointer;
 }
 
+.mumLightboxGlow {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: radial-gradient(circle at 50% 35%, rgba(255, 205, 175, 0.28) 0%, transparent 52%);
+  mix-blend-mode: soft-light;
+}
+
 .mumLightboxLayer {
   position: relative;
-  z-index: 1;
+  z-index: 2;
   display: flex;
   height: 100%;
   min-height: 0;
@@ -566,29 +1076,34 @@
 
 .mumLightboxClose {
   min-width: 4rem;
-  padding: 0.45rem 0.85rem;
-  border: none;
+  padding: 0.48rem 1rem;
+  border: 1px solid rgba(120, 88, 62, 0.22);
   border-radius: 999px;
-  background: rgba(255, 253, 249, 0.14);
-  color: #f5f0e8;
+  background: linear-gradient(165deg, #fffaf4 0%, #f2e6d6 100%);
+  color: rgba(52, 38, 28, 0.85);
   font-size: 0.9rem;
   font-weight: 500;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.05em;
   cursor: pointer;
-  transition: background 0.2s ease;
+  box-shadow: 0 4px 14px rgba(42, 28, 18, 0.12);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 .mumLightboxClose:hover {
-  background: rgba(255, 253, 249, 0.24);
+  box-shadow: 0 6px 18px rgba(42, 28, 18, 0.16);
+  transform: translateY(-1px);
 }
 
 .mumLightboxDate {
   margin-top: 0.35rem;
   max-width: 60%;
-  color: rgba(245, 240, 232, 0.92);
+  color: rgba(252, 246, 236, 0.88);
   font-size: 0.8125rem;
   letter-spacing: 0.04em;
   text-align: right;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.35);
 }
 
 .mumLightboxStage {
@@ -605,7 +1120,10 @@
 .mumLightboxImg {
   max-height: min(76vh, 100%);
   max-width: 100%;
-  border-radius: 12px;
+  border-radius: 14px;
+  box-shadow:
+    0 24px 60px rgba(0, 0, 0, 0.35),
+    0 0 0 1px rgba(255, 250, 240, 0.12);
   object-fit: contain;
   pointer-events: auto;
 }
@@ -615,24 +1133,39 @@
   width: 100%;
   max-width: 36rem;
   margin: 0 auto;
-  padding: 1rem 1rem calc(1.25rem + env(safe-area-inset-bottom));
-  background: linear-gradient(to top, rgba(28, 22, 16, 0.96), transparent);
+  padding: 1.15rem 1.25rem calc(1.35rem + env(safe-area-inset-bottom));
+  border-radius: 18px 18px 0 0;
+  background:
+    linear-gradient(178deg, #fffdf8 0%, #f5ebe0 48%, #ecdccd 100%);
+  box-shadow:
+    0 -12px 40px rgba(42, 28, 18, 0.12),
+    inset 0 2px 0 rgba(255, 255, 255, 0.65);
   pointer-events: auto;
 }
 
 .mumLightboxCaptionTitle {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.35rem;
   margin: 0;
-  color: #faf6ef;
+  color: rgba(42, 32, 26, 0.92);
   font-size: 1.125rem;
   font-weight: 600;
   letter-spacing: 0.03em;
 }
 
+.mumLightboxTitleHeart {
+  font-size: 0.95rem;
+  font-weight: 400;
+  color: rgba(170, 88, 82, 0.72);
+}
+
 .mumLightboxCaptionText {
-  margin: 0.5rem 0 0;
-  color: rgba(250, 246, 239, 0.88);
+  margin: 0.55rem 0 0;
+  color: rgba(62, 48, 38, 0.82);
   font-size: 0.9375rem;
-  line-height: 1.65;
+  line-height: 1.72;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -650,5 +1183,37 @@
   .mumLightbox {
     animation: none;
     opacity: 1;
+  }
+
+  .floatingMemoryParticle {
+    animation: none !important;
+    opacity: 0.06;
+  }
+
+  .heartBurstHeart {
+    animation: none !important;
+    opacity: 0 !important;
+  }
+
+  .mumIntroAmbientHeart {
+    animation: none !important;
+    opacity: 0.07;
+  }
+
+  .mumMuseumVisible .mumMuseumHeading,
+  .mumMuseumVisible .mumMuseumHandLine,
+  .mumMuseumVisible .mumMuseumLede,
+  .mumMuseumVisible .mumMuseumHeart {
+    animation: none !important;
+    opacity: 1;
+    transform: none;
+  }
+
+  .mumMuseumVisible .mumMuseumHeartPulse {
+    animation: none !important;
+  }
+
+  .mumCollageWall {
+    animation: none !important;
   }
 }

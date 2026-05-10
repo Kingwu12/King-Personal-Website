@@ -1,24 +1,24 @@
 [
   {
-    "id": 1,
-    "type": "photo",
-    "image": "/motherday2026/IMG_0009.jpg",
-    "title": "最近的一张",
-    "date": "现在",
-    "description": "这张其实就是很普通的自拍，但现在能一起拍照的机会没有以前那么多了，所以我想放进来。",
-    "variant": "hero",
-    "rotate": -3
-  },
+  "id": 1,
+  "type": "photo",
+  "image": "/motherday2026/IMG_0009.jpg",
+  "title": "第一次去 Monash",
+  "date": "很久以前",
+  "description": "第一次去 Monash 的时候拍的。那时候应该也没想到，我后来会在那里读这么多年。",
+  "variant": "hero",
+  "rotate": -3
+},
   {
-    "id": 2,
-    "type": "photo",
-    "image": "/motherday2026/IMG_0560.JPG",
-    "title": "出门前",
-    "date": "以前",
-    "description": "这张应该是出门前拍的。现在看起来挺普通，但也很像以前家里的感觉。",
-    "variant": "tall",
-    "rotate": 2
-  },
+  "id": 2,
+  "type": "photo",
+  "image": "/motherday2026/IMG_0560.JPG",
+  "title": "上学前",
+  "date": "Carey 那时候",
+  "description": "以前上学出门前，经常会突然拍一张这种照片。现在看真的感觉过去很久了。",
+  "variant": "tall",
+  "rotate": 2
+},
   {
     "id": 3,
     "type": "photo",
@@ -36,55 +36,61 @@
     "rotate": -2
   },
   {
-    "id": 4,
-    "type": "photo",
-    "image": "/motherday2026/IMG_0770.jpg",
-    "title": "一家人",
-    "date": "那一天",
-    "description": "这张大家都在。照片不一定拍得很正式，但现在看着挺舒服。",
-    "variant": "wide",
-    "rotate": 2
-  },
+  "id": 4,
+  "type": "photo",
+  "image": "/motherday2026/IMG_0770.jpg",
+  "title": "一起拍一张",
+  "date": "以前",
+  "description": "那天大家刚好都在，就顺手拍了一张这种照片。",
+  "variant": "wide",
+  "rotate": 2
+},
+ {
+  "id": 5,
+  "type": "photo",
+  "image": "/motherday2026/IMG_0831.JPG",
+  "title": "半睁眼旅行照",
+  "date": "旅行的时候",
+  "description": "这张背景好像挺正式的，结果你眼睛半睁着，反而变成了我最想放进来的一张。",
+  "variant": "polaroid",
+  "rotate": -2
+},
   {
-    "id": 5,
-    "type": "photo",
-    "image": "/motherday2026/IMG_0831.JPG",
-    "title": "出去走走",
-    "date": "以前",
-    "description": "一起出去的时候拍的。那时候没觉得有什么特别，现在看就是一段回忆。",
-    "variant": "polaroid",
+  "id": 6,
+  "type": "photo",
+  "image": "/motherday2026/IMG_1465.JPG",
+  "title": "去看雪的时候",
+  "date": "冬天",
+  "description": "去山上看雪的时候拍的。大家穿得圆圆的，现在看还有点好笑。",
+  "variant": "wide",
+  "rotate": 3
+},
+  {
+    "id": "chapter-previous",
+    "type": "divider",
+    "text": "以前",
     "rotate": -2
   },
   {
-    "id": 6,
-    "type": "photo",
-    "image": "/motherday2026/IMG_1465.JPG",
-    "title": "冷天",
-    "date": "以前",
-    "description": "大家穿得很厚，还挤在一起拍照。这张看起来就很冷，但也挺可爱的。",
-    "variant": "wide",
-    "rotate": 3
-  },
+  "id": 13,
+  "type": "photo",
+  "image": "/motherday2026/IMG_2534.jpg",
+  "title": "生日晚餐",
+  "date": "那一年",
+  "description": "帮你过生日的时候拍的。现在看这张照片，还是会想到那天晚上的感觉。",
+  "variant": "wide",
+  "rotate": -2
+},
   {
-    "id": 7,
-    "type": "photo",
-    "image": "/motherday2026/IMG_1535.JPG",
-    "title": "坐在一起",
-    "date": "以前",
-    "description": "这张没什么特别，就是坐在一起随手拍的。但我挺喜欢这种很真实的照片。",
-    "variant": "polaroid",
-    "rotate": -3
-  },
-  {
-    "id": 8,
-    "type": "photo",
-    "image": "/motherday2026/IMG_1989.JPG",
-    "title": "散步",
-    "date": "平时",
-    "description": "这张应该是出去走路的时候拍的。很普通，但看着会想起以前那些日子。",
-    "variant": "tall",
-    "rotate": 2
-  },
+  "id": 8,
+  "type": "photo",
+  "image": "/motherday2026/IMG_1989.JPG",
+  "title": "河边散步",
+  "date": "在中国",
+  "description": "在中国河边走路的时候，妹妹拿我手机拍的。现在看还挺像那时候的感觉。",
+  "variant": "tall",
+  "rotate": 2
+},
   {
     "id": 9,
     "type": "photo",
@@ -102,14 +108,20 @@
     "rotate": 2
   },
   {
-    "id": 10,
-    "type": "photo",
-    "image": "/motherday2026/IMG_2101.JPG",
-    "title": "妈妈本人",
-    "date": "平时",
-    "description": "这张一定要放。感觉很像你平时突然搞笑一下的样子。",
-    "variant": "tall",
-    "rotate": 3
+  "id": 10,
+  "type": "photo",
+  "image": "/motherday2026/IMG_2101.JPG",
+  "title": "妈妈本人",
+  "date": "以前",
+  "description": "这张真的很好笑，很像你平时突然乱玩一下的时候。",
+  "variant": "tall",
+  "rotate": 3
+},
+  {
+    "id": "chapter-daily",
+    "type": "divider",
+    "text": "平时",
+    "rotate": 1
   },
   {
     "id": 11,
@@ -131,60 +143,67 @@
     "variant": "polaroid",
     "rotate": 1
   },
+
   {
-    "id": 13,
-    "type": "photo",
-    "image": "/motherday2026/IMG_2534.jpg",
-    "title": "笑起来",
-    "date": "家里",
-    "description": "这张很自然，也挺好笑。家里很多开心的瞬间就是这样突然出现的。",
-    "variant": "wide",
-    "rotate": -2
-  },
+  "id": 14,
+  "type": "photo",
+  "image": "/motherday2026/IMG_2809.jpg",
+  "title": "骑车的时候",
+  "date": "以前",
+  "description": "一起骑车的时候拍的。现在已经很少会这样停下来拍照了。",
+  "variant": "hero",
+  "rotate": 2
+},
   {
-    "id": 14,
-    "type": "photo",
-    "image": "/motherday2026/IMG_2809.jpg",
-    "title": "生日",
-    "date": "生日那天",
-    "description": "一家人一起吃饭，然后拍一张照。以后这种照片应该多留一点。",
-    "variant": "hero",
-    "rotate": 2
-  },
+  "id": 15,
+  "type": "photo",
+  "image": "/motherday2026/IMG_2832.jpg",
+  "title": "搞怪一下",
+  "date": "在家",
+  "description": "突然回头做了个表情，就顺手拍下来了。现在看还是很好笑。",
+  "variant": "wide",
+  "rotate": -1
+},
   {
-    "id": 15,
-    "type": "photo",
-    "image": "/motherday2026/IMG_2832.jpg",
-    "title": "长大以后",
-    "date": "最近几年",
-    "description": "这张能看出来大家都长大了。感觉时间过得挺快的。",
-    "variant": "wide",
+  "id": 16,
+  "type": "photo",
+  "image": "/motherday2026/IMG_3237.JPG",
+  "title": "生日",
+  "date": "那天",
+  "description": "那天给你过生日的时候拍的。大家在家里一起吃饭，感觉挺好。",
+  "variant": "hero",
+  "rotate": 3
+},
+  {
+  "id": 17,
+  "type": "photo",
+  "image": "/motherday2026/IMG_3834.jpg",
+  "title": "第一次买摩托车",
+  "date": "那一天",
+  "description": "第一次去买摩托车的时候拍的。你还先坐上去试了一下。",
+  "variant": "wide",
+  "rotate": -3
+},
+  {
+    "id": "chapter-now",
+    "type": "divider",
+    "text": "现在",
     "rotate": -1
-  },
-  {
-    "id": 16,
-    "type": "photo",
-    "image": "/motherday2026/IMG_3237.JPG",
-    "title": "酷妈妈",
-    "date": "某一天",
-    "description": "这张太酷了，必须放进来。以后应该多拍一点这种照片。",
-    "variant": "hero",
-    "rotate": 3
-  },
-  {
-    "id": 17,
-    "type": "photo",
-    "image": "/motherday2026/IMG_3834.jpg",
-    "title": "现在的我们",
-    "date": "现在",
-    "description": "这张是比较新的照片。大家都变了很多，但还是一家人坐在一起。",
-    "variant": "wide",
-    "rotate": -3
   },
   {
     "id": "note-3",
     "type": "note",
     "text": "以后我再慢慢往这里加新的照片。",
     "rotate": 1
-  }
+  },
+  {
+  "id": 18,
+  "type": "photo",
+  "image": "/motherday2026/image.jpg",
+  "title": "最近的一次",
+  "date": "中国",
+  "description": "这次回中国拍的。现在大家都长大了，能这样一起出来拍照的时候也越来越少了。",
+  "variant": "hero",
+  "rotate": 1
+}
 ]
