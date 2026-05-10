@@ -190,34 +190,22 @@ const FloatingMemoryParticles = memo(function FloatingMemoryParticles(): ReactEl
 
 FloatingMemoryParticles.displayName = 'FloatingMemoryParticles';
 
-/** One-shot burst after “进去看看” — soft palette, varied motion */
-const HEART_BURST_SPECS = [
-  { g: '♡', x: '9%', bottom: '32%', size: '13px', c: 'rgba(214, 148, 148, 0.88)', d: '0ms', r: '-11deg', drift: '-5px' },
-  { g: '♥', x: '17%', bottom: '36%', size: '11px', c: 'rgba(148, 108, 88, 0.78)', d: '35ms', r: '8deg', drift: '7px' },
-  { g: '心', x: '24%', bottom: '31%', size: '12px', c: 'rgba(196, 158, 138, 0.75)', d: '70ms', r: '-5deg', drift: '3px' },
-  { g: '♡', x: '33%', bottom: '35%', size: '14px', c: 'rgba(228, 168, 168, 0.85)', d: '20ms', r: '6deg', drift: '-8px' },
-  { g: '♡', x: '41%', bottom: '33%', size: '12px', c: 'rgba(228, 210, 188, 0.88)', d: '95ms', r: '-9deg', drift: '4px' },
-  { g: '♥', x: '48%', bottom: '37%', size: '10px', c: 'rgba(138, 102, 82, 0.76)', d: '55ms', r: '-4deg', drift: '-3px' },
-  { g: '♡', x: '54%', bottom: '30%', size: '13px', c: 'rgba(218, 162, 150, 0.86)', d: '110ms', r: '10deg', drift: '9px' },
-  { g: '心', x: '61%', bottom: '34%', size: '11px', c: 'rgba(236, 218, 196, 0.85)', d: '15ms', r: '-7deg', drift: '-6px' },
-  { g: '♥', x: '68%', bottom: '36%', size: '12px', c: 'rgba(160, 118, 96, 0.79)', d: '80ms', r: '5deg', drift: '5px' },
-  { g: '♡', x: '74%', bottom: '32%', size: '14px', c: 'rgba(224, 156, 156, 0.84)', d: '48ms', r: '-8deg', drift: '-7px' },
-  { g: '♡', x: '81%', bottom: '35%', size: '11px', c: 'rgba(206, 140, 140, 0.8)', d: '125ms', r: '7deg', drift: '6px' },
-  { g: '♥', x: '87%', bottom: '31%', size: '12px', c: 'rgba(152, 112, 92, 0.77)', d: '62ms', r: '-6deg', drift: '-4px' },
-  { g: '心', x: '13%', bottom: '38%', size: '10px', c: 'rgba(190, 150, 130, 0.72)', d: '100ms', r: '4deg', drift: '8px' },
-  { g: '♡', x: '92%', bottom: '34%', size: '13px', c: 'rgba(212, 152, 152, 0.83)', d: '28ms', r: '-10deg', drift: '-9px' },
-  { g: '♡', x: '50%', bottom: '29%', size: '11px', c: 'rgba(176, 128, 118, 0.78)', d: '140ms', r: '9deg', drift: '2px' },
-] as const;
+type TransitionStage = 'idle' | 'opening' | 'entered';
+
+const MEMORY_HEART_PATH =
+  'M250 410 C120 310 45 230 70 135 C88 65 170 45 250 130 C330 45 412 65 430 135 C455 230 380 310 250 410 Z';
+
+const OPENING_DURATION_MS = 3200;
 
 /** Very faint hearts only on the intro screen */
 const INTRO_AMBIENT_HEARTS = [
-  { g: '♡', top: '16%', left: '11%', delay: '0s', dur: '24s' },
-  { g: '♥', top: '22%', left: '79%', delay: '-4s', dur: '26s' },
-  { g: '心', top: '44%', left: '8%', delay: '-8s', dur: '22s' },
-  { g: '♡', top: '58%', left: '82%', delay: '-2s', dur: '28s' },
-  { g: '♡', top: '72%', left: '18%', delay: '-12s', dur: '25s' },
-  { g: '♥', top: '34%', left: '44%', delay: '-6s', dur: '30s' },
-  { g: '♡', top: '12%', left: '62%', delay: '-10s', dur: '23s' },
+  {g: '♡', top: '16%', left: '11%', delay: '0s', dur: '24s'},
+  {g: '♥', top: '22%', left: '79%', delay: '-4s', dur: '26s'},
+  {g: '心', top: '44%', left: '8%', delay: '-8s', dur: '22s'},
+  {g: '♡', top: '58%', left: '82%', delay: '-2s', dur: '28s'},
+  {g: '♡', top: '72%', left: '18%', delay: '-12s', dur: '25s'},
+  {g: '♥', top: '34%', left: '44%', delay: '-6s', dur: '30s'},
+  {g: '♡', top: '12%', left: '62%', delay: '-10s', dur: '23s'},
 ] as const;
 
 const staggerClass = [
@@ -232,14 +220,16 @@ const BG_MUSIC_SRC = '/motherday2026/background-music.mp3';
 const BG_MUSIC_VOLUME = 0.28;
 
 const MotherDayMuseum = memo(() => {
-  const [entered, setEntered] = useState(false);
-  const [showHeartBurst, setShowHeartBurst] = useState(false);
+  const [transitionStage, setTransitionStage] = useState<TransitionStage>('idle');
   const [musicMuted, setMusicMuted] = useState(false);
   const [active, setActive] = useState<PhotoModalPayload | null>(null);
   const titleId = useId();
   const descriptionId = useId();
   const introEnterLockRef = useRef(false);
+  const openingTimerRef = useRef<number | null>(null);
   const audioRef = useRef<HTMLAudioElement | null>(null);
+
+  const entered = transitionStage === 'entered';
 
   const open = useCallback((memory: PhotoModalPayload) => {
     setActive(memory);
@@ -250,7 +240,7 @@ const MotherDayMuseum = memo(() => {
   }, []);
 
   const handleIntroEnter = useCallback(() => {
-    if (entered || introEnterLockRef.current) {
+    if (transitionStage !== 'idle' || introEnterLockRef.current) {
       return;
     }
     introEnterLockRef.current = true;
@@ -259,14 +249,32 @@ const MotherDayMuseum = memo(() => {
       audio.volume = BG_MUSIC_VOLUME;
       void audio.play().catch(() => {});
     }
-    setShowHeartBurst(true);
-    window.setTimeout(() => {
-      setEntered(true);
-    }, 650);
-    window.setTimeout(() => {
-      setShowHeartBurst(false);
-    }, 1200);
-  }, [entered]);
+
+    const reduceMotion =
+      typeof window !== 'undefined' &&
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (reduceMotion) {
+      setTransitionStage('entered');
+      return;
+    }
+
+    setTransitionStage('opening');
+    const timerId = window.setTimeout(() => {
+      setTransitionStage('entered');
+      openingTimerRef.current = null;
+    }, OPENING_DURATION_MS);
+    openingTimerRef.current = timerId as number;
+  }, [transitionStage]);
+
+  useEffect(
+    () => () => {
+      if (openingTimerRef.current !== null) {
+        window.clearTimeout(openingTimerRef.current);
+      }
+    },
+    [],
+  );
 
   const toggleBackgroundMusic = useCallback(() => {
     const audio = audioRef.current;
@@ -306,30 +314,37 @@ const MotherDayMuseum = memo(() => {
 
   return (
     <div className={classNames(styles.mumRoot, styles.mumSans)} lang="zh-Hans">
-      <audio ref={audioRef} preload="auto" loop src={BG_MUSIC_SRC} />
+      <audio loop preload="auto" ref={audioRef} src={BG_MUSIC_SRC} />
 
       <FloatingMemoryParticles />
 
-      {showHeartBurst ? (
-        <div aria-hidden className={styles.heartBurst}>
-          {HEART_BURST_SPECS.map((spec, i) => (
-            <span
-              className={styles.heartBurstHeart}
-              key={`heart-burst-${i}`}
-              style={
-                {
-                  '--hb-bottom': spec.bottom,
-                  '--hb-color': spec.c,
-                  '--hb-delay': spec.d,
-                  '--hb-drift': spec.drift,
-                  '--hb-rotate': spec.r,
-                  '--hb-size': spec.size,
-                  '--hb-x': spec.x,
-                } as CSSProperties
-              }>
-              {spec.g}
-            </span>
-          ))}
+      {transitionStage === 'opening' ? (
+        <div aria-hidden className={styles.memoryOpeningTransition}>
+          <div className={styles.memoryWarmGlow} />
+
+          <svg className={styles.memoryHeartSvg} viewBox="0 0 500 460">
+            <path
+              className={styles.memoryHeartPath}
+              d={MEMORY_HEART_PATH}
+              pathLength={1600}
+            />
+          </svg>
+
+          <div className={styles.memoryHeartFill} />
+
+          <div className={styles.memoryPhotoBurst}>
+            <span className={classNames(styles.memoryMiniPhoto, styles.memoryMiniPhotoA)} />
+            <span className={classNames(styles.memoryMiniPhoto, styles.memoryMiniPhotoB)} />
+            <span className={classNames(styles.memoryMiniPhoto, styles.memoryMiniPhotoC)} />
+            <span className={classNames(styles.memoryMiniPhoto, styles.memoryMiniPhotoD)} />
+            <span className={classNames(styles.memoryMiniPhoto, styles.memoryMiniPhotoE)} />
+            <span className={classNames(styles.memoryMiniPhoto, styles.memoryMiniPhotoF)} />
+          </div>
+
+          <div className={styles.memoryOpeningCopy}>
+            <p>打开回忆</p>
+            <small>慢慢看</small>
+          </div>
         </div>
       ) : null}
 
@@ -357,10 +372,10 @@ const MotherDayMuseum = memo(() => {
         <p className={styles.mumIntroSubtitle}>一些照片，一些回忆，还有一些平时没怎么说出口的话。</p>
         <button
           className={styles.mumIntroBtn}
-          disabled={entered || showHeartBurst}
+          disabled={transitionStage !== 'idle'}
           onClick={handleIntroEnter}
           type="button">
-          进去看看
+          打开看看
         </button>
       </section>
 
