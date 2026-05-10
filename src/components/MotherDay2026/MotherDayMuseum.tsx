@@ -1,112 +1,150 @@
 import classNames from 'classnames';
 import Image from 'next/image';
-import {type CSSProperties,memo, useCallback, useEffect, useId, useState} from 'react';
+import {
+  type CSSProperties,
+  memo,
+  type ReactElement,
+  useCallback,
+  useEffect,
+  useId,
+  useState,
+} from 'react';
 
+import {
+  memoryItems,
+  type MemoryNoteItem,
+  type MemoryPhotoItem,
+  type PhotoModalPayload,
+  type PhotoVariant,
+} from './memoryItems';
 import styles from './motherday2026.module.css';
 
-export type MemoryVariant = 'polaroid' | 'wide' | 'small' | 'note';
-export type MemoryAlign = 'left' | 'right' | 'center';
-
-/** 编辑回忆：更换 `public/motherday2026/` 下的图片路径，并调整文案与 variant / rotate / align。 */
-export type MotherDayMemory = {
-  id: number;
-  image: string;
-  title: string;
-  date: string;
-  description: string;
-  variant: MemoryVariant;
-  rotate: number;
-  align: MemoryAlign;
-};
-
-const variantClass: Record<MemoryVariant, string> = {
-  polaroid: styles.mumVariantPolaroid,
+const variantClass: Record<PhotoVariant, string> = {
+  hero: styles.mumVariantHero,
   wide: styles.mumVariantWide,
+  polaroid: styles.mumVariantPolaroid,
   small: styles.mumVariantSmall,
-  note: styles.mumVariantNote,
+  tall: styles.mumVariantTall,
 };
 
-const alignClass: Record<MemoryAlign, string> = {
-  left: styles.mumCollageAlignLeft,
-  right: styles.mumCollageAlignRight,
-  center: styles.mumCollageAlignCenter,
-};
+const ScrapbookPhotoButton = memo(function ScrapbookPhotoButton({
+  item,
+  onOpen,
+}: {
+  item: MemoryPhotoItem;
+  onOpen: (p: PhotoModalPayload) => void;
+}): ReactElement {
+  const variant: PhotoVariant = item.variant ?? 'polaroid';
+  const pin = typeof item.id === 'number' && item.id % 3 === 0;
 
-/**
- * ╔══════════════════════════════════════════════════════════════════════════╗
- * ║  回忆数据：改图片路径、文案，以及 variant / rotate / align 控制版式与旋转 ║
- * ╚══════════════════════════════════════════════════════════════════════════╝
- */
-const memories: MotherDayMemory[] = [
-  {
-    id: 1,
-    image: '/motherday2026/photo1.jpg',
-    title: '小时候',
-    date: '很久以前',
-    description: '小时候很多事情我都不懂，只知道你一直在我身边。现在回头看，才发现那时候你做了很多。',
-    variant: 'polaroid',
-    rotate: -3,
-    align: 'left',
-  },
-  {
-    id: 2,
-    image: '/motherday2026/photo2.jpg',
-    title: '家',
-    date: '一直',
-    description: '很多时候家就是很普通的日子，吃饭、聊天、被你提醒这个那个。但这些东西其实一直都很重要。',
-    variant: 'wide',
-    rotate: 2,
-    align: 'right',
-  },
-  {
-    id: 3,
-    image: '/motherday2026/photo3.jpg',
-    title: '长大以后',
-    date: '后来',
-    description: '长大以后才慢慢明白，当妈妈其实不容易。以前觉得很多事情理所当然，现在知道不是。',
-    variant: 'small',
-    rotate: -1,
-    align: 'center',
-  },
-  {
-    id: 4,
-    image: '/motherday2026/photo4.jpg',
-    title: '一些小事',
-    date: '平时',
-    description: '有些事可能你自己都不记得了，但我会记得。比如做饭、接送、提醒我、担心我，还有很多很小的事。',
-    variant: 'polaroid',
-    rotate: 3,
-    align: 'right',
-  },
-  {
-    id: 5,
-    image: '/motherday2026/photo5.jpg',
-    title: '像你的地方',
-    date: '现在',
-    description: '我有时候也会发现自己有些地方挺像你的，比如认真、固执、操心，还有不太会直接说软话。',
-    variant: 'wide',
-    rotate: -2,
-    align: 'left',
-  },
-  {
-    id: 6,
-    image: '/motherday2026/photo6.jpg',
-    title: '以后',
-    date: '慢慢来',
-    description: '我现在还有很多地方没做好，但我会继续努力。希望以后能让你少操点心，也让你更放心一点。',
-    variant: 'polaroid',
-    rotate: 1,
-    align: 'center',
-  },
-];
+  const imageSrc = item.image ?? '';
+  const title = item.title ?? '';
+  const date = item.date ?? '';
+
+  const img = (
+    <Image
+      alt={`${title} 的照片`}
+      className={styles.mumPhotoCover}
+      fill
+      sizes="(max-width: 767px) 45vw, 240px"
+      src={imageSrc}
+    />
+  );
+
+  const caption = (
+    <div className={styles.mumCardCaption}>
+      <span className={styles.mumCardTitle}>{title}</span>
+      <span className={styles.mumCardDate}>{date}</span>
+    </div>
+  );
+
+  let inner: ReactElement;
+
+  switch (variant) {
+    case 'hero':
+      inner = (
+        <>
+          <div className={styles.mumAspectHero}>{img}</div>
+          {caption}
+        </>
+      );
+      break;
+    case 'wide':
+      inner = (
+        <>
+          <div className={styles.mumAspectWide}>{img}</div>
+          {caption}
+        </>
+      );
+      break;
+    case 'tall':
+      inner = (
+        <>
+          <div className={styles.mumAspectTall}>{img}</div>
+          {caption}
+        </>
+      );
+      break;
+    case 'small':
+      inner = (
+        <>
+          <div className={styles.mumAspectSmall}>{img}</div>
+          {caption}
+        </>
+      );
+      break;
+    case 'polaroid':
+      inner = (
+        <div className={styles.mumPolaroidCard}>
+          <div className={styles.mumAspectPolaroidImg}>{img}</div>
+          <div className={styles.mumPolaroidCaptionBand}>{caption}</div>
+        </div>
+      );
+      break;
+  }
+
+  return (
+    <button
+      className={classNames(
+        styles.mumMemoryCard,
+        variant !== 'polaroid' && styles.mumPhotoCardShell,
+        variantClass[variant],
+        pin && styles.mumMemoryCardPin,
+      )}
+      onClick={() =>
+        onOpen({
+          id: item.id,
+          image: imageSrc,
+          title,
+          date,
+          description: item.description ?? '',
+        })
+      }
+      type="button">
+      {inner}
+    </button>
+  );
+});
+
+ScrapbookPhotoButton.displayName = 'ScrapbookPhotoButton';
+
+const ScrapbookNote = memo(function ScrapbookNote({item}: {item: MemoryNoteItem}): ReactElement {
+  return (
+    <div className={styles.mumNoteCard}>
+      <p className={styles.mumNoteText}>{item.text ?? ''}</p>
+    </div>
+  );
+});
+
+ScrapbookNote.displayName = 'ScrapbookNote';
 
 const MotherDayMuseum = memo(() => {
   const [entered, setEntered] = useState(false);
-  const [active, setActive] = useState<MotherDayMemory | null>(null);
+  const [active, setActive] = useState<PhotoModalPayload | null>(null);
   const titleId = useId();
   const descriptionId = useId();
 
-  const open = useCallback((memory: MotherDayMemory) => {
+  const open = useCallback((memory: PhotoModalPayload) => {
     setActive(memory);
   }, []);
 
@@ -159,80 +197,22 @@ const MotherDayMuseum = memo(() => {
           <div aria-hidden className={styles.mumPaperDivider} />
 
           <div className={styles.mumCollageWall}>
-            {memories.map(memory => (
-              <div
-                className={classNames(styles.mumCollageItem, alignClass[memory.align])}
-                key={memory.id}
-                style={
-                  {
-                    '--memory-rotate': `${memory.rotate}deg`,
-                    zIndex: memory.id,
-                  } as CSSProperties
-                }>
-                <button
-                  className={classNames(
-                    styles.mumMemoryCard,
-                    variantClass[memory.variant],
-                    memory.id % 2 === 0 && styles.mumMemoryCardPin,
+            <div className={styles.mumMuseumMasonry}>
+              {memoryItems.map(item => (
+                <div
+                  className={styles.mumScrapbookItem}
+                  key={`${item.type}-${item.id}`}
+                  style={
+                    {'--rotate': `${item.rotate ?? 0}deg`} as CSSProperties
+                  }>
+                  {item.type === 'photo' ? (
+                    <ScrapbookPhotoButton item={item} onOpen={open} />
+                  ) : (
+                    <ScrapbookNote item={item} />
                   )}
-                  onClick={() => open(memory)}
-                  type="button">
-                  {memory.variant === 'polaroid' || memory.variant === 'note' ? (
-                    <span className={styles.mumPolaroidShell}>
-                      <span className={styles.mumPolaroidPhoto}>
-                        <Image
-                          alt={`${memory.title} 的照片`}
-                          className={styles.mumPolaroidImg}
-                          fill
-                          sizes="(max-width: 767px) 78vw, 380px"
-                          src={memory.image}
-                        />
-                      </span>
-                      <span className={styles.mumPolaroidCaption}>
-                        <span className={styles.mumPolaroidTitle}>{memory.title}</span>
-                        <span className={styles.mumPolaroidDate}>{memory.date}</span>
-                      </span>
-                    </span>
-                  ) : null}
-
-                  {memory.variant === 'wide' ? (
-                    <span className={styles.mumWideShell}>
-                      <span className={styles.mumWidePhoto}>
-                        <Image
-                          alt={`${memory.title} 的照片`}
-                          className={styles.mumWideImg}
-                          fill
-                          sizes="(max-width: 767px) 88vw, 640px"
-                          src={memory.image}
-                        />
-                      </span>
-                      <span className={styles.mumWideNote}>
-                        <span className={styles.mumWideNoteTitle}>{memory.title}</span>
-                        <span className={styles.mumWideNoteDate}>{memory.date}</span>
-                      </span>
-                    </span>
-                  ) : null}
-
-                  {memory.variant === 'small' ? (
-                    <span className={styles.mumSmallShell}>
-                      <span className={styles.mumSmallPhoto}>
-                        <Image
-                          alt={`${memory.title} 的照片`}
-                          className={styles.mumSmallImg}
-                          fill
-                          sizes="(max-width: 767px) 68vw, 280px"
-                          src={memory.image}
-                        />
-                      </span>
-                      <span className={styles.mumSmallCaption}>
-                        <span className={styles.mumSmallTitle}>{memory.title}</span>
-                        <span className={styles.mumSmallDate}>{memory.date}</span>
-                      </span>
-                    </span>
-                  ) : null}
-                </button>
-              </div>
-            ))}
+                </div>
+              ))}
+            </div>
           </div>
 
           <div aria-hidden className={styles.mumPaperDividerSoft} />
@@ -260,7 +240,7 @@ const MotherDayMuseum = memo(() => {
                 这个小网站，是我今年给你的母亲节礼物。它现在还只是第一版，以后我会继续往里面加新的照片和回忆。
               </p>
               <p className={styles.mumLetterSignoff}>我爱你。</p>
-              <p className={styles.mumLetterSignoff}>King</p>
+              <p className={styles.mumLetterSignoff}>爱你的儿子</p>
             </div>
             <p className={styles.mumLetterFootnote}>以后我会继续往这里加新的照片和回忆。</p>
           </section>

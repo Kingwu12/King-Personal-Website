@@ -136,14 +136,14 @@
 
 .mumMuseumInner {
   margin: 0 auto;
-  max-width: min(52rem, 94vw);
-  padding: 2rem 1rem 4rem;
+  max-width: 980px;
+  padding: 1.35rem 0 4rem;
   padding-bottom: calc(4rem + env(safe-area-inset-bottom));
 }
 
 @media (min-width: 768px) {
   .mumMuseumInner {
-    padding: 2.75rem 1.5rem 5rem;
+    padding: 2rem 1rem 5rem;
   }
 }
 
@@ -170,7 +170,7 @@
 /* Decorative paper strips */
 .mumPaperDivider {
   height: 10px;
-  margin: 0 auto 1.75rem;
+  margin: 0 auto 1.25rem;
   max-width: min(18rem, 85%);
   border-radius: 3px;
   background: linear-gradient(
@@ -187,7 +187,7 @@
 
 .mumPaperDividerSoft {
   height: 8px;
-  margin: 2.5rem auto 2rem;
+  margin: 2rem auto 1.75rem;
   max-width: min(14rem, 70%);
   border-radius: 2px;
   background: linear-gradient(
@@ -200,75 +200,79 @@
   transform: rotate(1.2deg);
 }
 
-/* Collage wall — textured inset “album spread” */
+/* Collage wall — textured tray + masonry columns */
 .mumCollageWall {
   position: relative;
-  margin: 0 -0.25rem;
-  padding: 1.75rem 0.35rem 2.25rem;
-  border-radius: 18px;
+  margin: 0;
+  padding: 0.75rem 0 1rem;
+  border-radius: 16px;
   background-image:
-    radial-gradient(circle at 20% 15%, rgba(255, 250, 242, 0.55) 0%, transparent 42%),
-    radial-gradient(circle at 85% 75%, rgba(230, 210, 185, 0.12) 0%, transparent 48%),
-    linear-gradient(178deg, rgba(255, 252, 246, 0.92) 0%, rgba(246, 236, 222, 0.65) 100%);
+    radial-gradient(circle at 18% 12%, rgba(255, 250, 242, 0.65) 0%, transparent 46%),
+    radial-gradient(circle at 88% 72%, rgba(230, 210, 185, 0.14) 0%, transparent 48%),
+    radial-gradient(circle at 48% 92%, rgba(200, 175, 140, 0.06) 0%, transparent 42%),
+    linear-gradient(178deg, rgba(255, 252, 246, 0.95) 0%, rgba(246, 236, 222, 0.72) 100%);
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.65),
     inset 0 -1px 0 rgba(120, 90, 60, 0.06),
-    0 12px 40px rgba(62, 48, 36, 0.06);
+    0 10px 36px rgba(62, 48, 36, 0.07);
 }
 
 @media (min-width: 768px) {
   .mumCollageWall {
-    margin: 0;
-    padding: 2rem 1.25rem 2.75rem;
+    padding: 1rem 0 1.25rem;
   }
 }
 
-.mumCollageItem {
-  position: relative;
-  display: flex;
-  width: 100%;
-  justify-content: center;
-  padding-bottom: 0.25rem;
-}
-
-.mumCollageItem + .mumCollageItem {
-  margin-top: -0.35rem;
+/* museum-masonry — document flow, no absolute layout */
+.mumMuseumMasonry {
+  column-count: 2;
+  column-gap: 12px;
+  padding: 0 14px;
 }
 
 @media (min-width: 768px) {
-  .mumCollageItem + .mumCollageItem {
-    margin-top: -1rem;
+  .mumMuseumMasonry {
+    column-count: 3;
+    column-gap: 13px;
   }
 }
 
-.mumCollageAlignLeft {
-  justify-content: flex-start;
-  padding-left: clamp(0rem, 2vw, 1rem);
+@media (min-width: 1100px) {
+  .mumMuseumMasonry {
+    column-count: 4;
+    column-gap: 14px;
+  }
 }
 
-.mumCollageAlignRight {
-  justify-content: flex-end;
-  padding-right: clamp(0rem, 2vw, 1rem);
+/* scrapbook-item */
+.mumScrapbookItem {
+  display: inline-block;
+  width: 100%;
+  min-width: 130px;
+  margin: 0 0 14px;
+  break-inside: avoid;
+  page-break-inside: avoid;
+  transform: rotate(var(--rotate, 0deg));
+  transform-origin: center center;
+  vertical-align: top;
+  -webkit-column-break-inside: avoid;
 }
 
-.mumCollageAlignCenter {
-  justify-content: center;
-}
-
-/* Memory card — tape (::before), optional pin (::after) */
+/* Photo button — full column width, tape + optional pin */
 .mumMemoryCard {
   position: relative;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
   appearance: none;
   border: none;
   padding: 0;
   background: transparent;
   cursor: pointer;
   text-align: left;
-  transform: rotate(var(--memory-rotate, 0deg));
   transition:
-    transform 0.42s cubic-bezier(0.22, 1, 0.36, 1),
-    box-shadow 0.42s ease,
-    filter 0.35s ease;
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 0.3s ease;
   -webkit-tap-highlight-color: transparent;
 }
 
@@ -276,11 +280,11 @@
   content: '';
   position: absolute;
   z-index: 3;
-  top: -7px;
+  top: -6px;
   left: 50%;
   width: 44%;
-  max-width: 9.5rem;
-  height: 15px;
+  max-width: 7.5rem;
+  height: 13px;
   border-radius: 2px;
   background: var(--tape);
   box-shadow: 0 1px 3px rgba(42, 36, 28, 0.12);
@@ -292,10 +296,10 @@
   content: '';
   position: absolute;
   z-index: 4;
-  top: 8px;
-  right: 10px;
-  width: 11px;
-  height: 11px;
+  top: 6px;
+  right: 8px;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
   background: radial-gradient(circle at 32% 28%, #f8f0e4, #b89562 55%, #7a5c3a);
   box-shadow:
@@ -304,166 +308,157 @@
   pointer-events: none;
 }
 
-.mumMemoryCard:hover {
-  transform: rotate(var(--memory-rotate, 0deg)) translateY(-4px) scale(1.015);
-  filter: saturate(1.03);
+.mumScrapbookItem .mumMemoryCard:hover {
+  transform: translateY(-3px) scale(1.012);
+  filter: saturate(1.04);
 }
 
-.mumMemoryCard:active {
-  transform: rotate(var(--memory-rotate, 0deg)) translateY(-1px) scale(1.005);
+.mumScrapbookItem .mumMemoryCard:active {
+  transform: translateY(-1px) scale(1.005);
 }
 
 .mumMemoryCard:focus-visible {
   outline: 2px solid var(--md-ink);
-  outline-offset: 6px;
+  outline-offset: 4px;
 }
 
-/* Variant: Polaroid & note */
-.mumVariantPolaroid,
-.mumVariantNote {
-  width: min(78vw, 22rem);
-}
-
-.mumVariantNote .mumPolaroidShell {
-  border: 1px dashed rgba(120, 92, 62, 0.28);
-}
-
-.mumPolaroidShell {
-  display: flex;
+/* Standard photo frame (non-polaroid) */
+.mumPhotoCardShell {
   width: 100%;
-  flex-direction: column;
   overflow: hidden;
-  border-radius: 10px;
+  border-radius: 12px;
   background: #fffaf2;
   box-shadow: var(--md-shadow-soft);
 }
 
-.mumPolaroidPhoto {
+/* Aspect boxes — image fills cell */
+.mumAspectHero,
+.mumAspectWide,
+.mumAspectTall,
+.mumAspectSmall,
+.mumAspectPolaroidImg {
   position: relative;
-  aspect-ratio: 4 / 5;
+  overflow: hidden;
   background: #eaddcf;
 }
 
-.mumPolaroidImg {
+.mumAspectHero {
+  aspect-ratio: 4 / 5;
+}
+
+.mumAspectWide {
+  aspect-ratio: 4 / 3;
+}
+
+.mumAspectTall {
+  aspect-ratio: 3 / 4;
+}
+
+.mumAspectSmall {
+  aspect-ratio: 1 / 1;
+}
+
+.mumAspectPolaroidImg {
+  aspect-ratio: 1 / 1;
+}
+
+.mumPhotoCover {
   object-fit: cover;
 }
 
-.mumPolaroidCaption {
-  display: flex;
-  min-height: 3.35rem;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
-  padding: 0.65rem 0.85rem 0.95rem;
-  background: linear-gradient(to bottom, #fffdf8, #faf4ea);
+/* Polaroid: square image + thick bottom band */
+.mumPolaroidCard {
+  width: 100%;
+  overflow: hidden;
+  border-radius: 11px;
+  background: #fffdf8;
+  box-shadow: var(--md-shadow-soft);
 }
 
-.mumPolaroidTitle {
-  font-size: 1rem;
+.mumPolaroidCaptionBand {
+  padding: 0.65rem 0.7rem 1rem;
+  background: linear-gradient(to bottom, #fffdf8, #faf4ea);
+  min-height: 3.5rem;
+}
+
+/* Captions — horizontal Chinese */
+.mumCardCaption {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  padding: 0.5rem 0.65rem 0.65rem;
+  writing-mode: horizontal-tb;
+  white-space: normal;
+  word-break: normal;
+}
+
+.mumPolaroidCaptionBand .mumCardCaption {
+  padding: 0;
+}
+
+.mumCardTitle {
+  margin: 0;
+  font-size: clamp(14px, 3.6vw, 16px);
   font-weight: 600;
+  line-height: 1.35;
   letter-spacing: 0.02em;
 }
 
-.mumPolaroidDate {
-  margin-top: 0.2rem;
+.mumCardDate {
+  margin: 0;
   color: var(--md-ink-soft);
-  font-size: 0.78rem;
-  letter-spacing: 0.08em;
+  font-size: clamp(11px, 3vw, 12px);
+  line-height: 1.35;
+  letter-spacing: 0.03em;
 }
 
-/* Variant: Wide landscape */
-.mumVariantWide {
-  width: min(88vw, 38rem);
-}
-
-.mumWideShell {
-  display: flex;
+/* Variant class hooks (exported for TS mapping) */
+.mumVariantHero,
+.mumVariantWide,
+.mumVariantPolaroid,
+.mumVariantSmall,
+.mumVariantTall {
   width: 100%;
-  flex-direction: column;
-  gap: 0;
 }
 
-.mumWidePhoto {
+/* Standalone note cards — readable width in column */
+.mumNoteCard {
   position: relative;
-  aspect-ratio: 16 / 10;
-  overflow: hidden;
-  border-radius: 12px 12px 4px 4px;
-  background: #eaddcf;
-  box-shadow: var(--md-shadow-soft);
-}
-
-.mumWideImg {
-  object-fit: cover;
-}
-
-.mumWideNote {
-  position: relative;
-  margin-top: -0.35rem;
-  margin-left: 0.75rem;
-  max-width: calc(100% - 1.25rem);
-  padding: 0.55rem 0.75rem 0.65rem;
-  border-radius: 8px;
-  background: #fff7ea;
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 130px;
+  padding: 0.85rem 1rem 0.95rem;
+  border-radius: 11px 13px 12px 10px;
+  background: linear-gradient(165deg, #fffef9 0%, #f8f0e4 100%);
   box-shadow:
-    0 6px 18px rgba(42, 36, 28, 0.07),
-    inset 0 1px 0 rgba(255, 255, 255, 0.65);
-  transform: rotate(-1deg);
+    0 8px 22px rgba(42, 36, 28, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.75);
 }
 
-.mumWideNoteTitle {
-  display: block;
-  font-size: 0.95rem;
-  font-weight: 600;
+.mumNoteCard::before {
+  content: '';
+  position: absolute;
+  top: -5px;
+  left: 50%;
+  width: 40%;
+  height: 12px;
+  border-radius: 2px;
+  background: rgba(228, 208, 178, 0.55);
+  box-shadow: 0 1px 2px rgba(42, 36, 28, 0.1);
+  transform: translateX(-50%) rotate(-8deg);
 }
 
-.mumWideNoteDate {
-  display: block;
-  margin-top: 0.15rem;
-  color: var(--md-ink-soft);
-  font-size: 0.78rem;
-}
-
-/* Variant: Small portrait */
-.mumVariantSmall {
-  width: min(68vw, 16.5rem);
-}
-
-.mumSmallShell {
-  display: flex;
-  width: 100%;
-  flex-direction: column;
-  overflow: hidden;
-  border-radius: 14px;
-  background: #fffaf2;
-  box-shadow: var(--md-shadow-soft);
-}
-
-.mumSmallPhoto {
+.mumNoteText {
   position: relative;
-  aspect-ratio: 3 / 4;
-  background: #eaddcf;
-}
-
-.mumSmallImg {
-  object-fit: cover;
-}
-
-.mumSmallCaption {
-  display: flex;
-  flex-direction: column;
-  padding: 0.55rem 0.65rem 0.75rem;
-  background: linear-gradient(to bottom, #fffdf8, #faf4ea);
-}
-
-.mumSmallTitle {
-  font-size: 0.95rem;
-  font-weight: 600;
-}
-
-.mumSmallDate {
-  margin-top: 0.15rem;
+  margin: 0;
   color: var(--md-ink-soft);
-  font-size: 0.75rem;
+  font-size: clamp(0.88rem, 3.5vw, 0.95rem);
+  font-style: italic;
+  line-height: 1.6;
+  letter-spacing: 0.02em;
+  writing-mode: horizontal-tb;
+  white-space: normal;
+  word-break: normal;
 }
 
 /* Letter */
@@ -643,13 +638,13 @@
 @media (prefers-reduced-motion: reduce) {
   .mumIntro,
   .mumMuseum,
-  .mumMemoryCard {
+  .mumScrapbookItem .mumMemoryCard {
     transition-duration: 0.01ms !important;
   }
 
-  .mumMemoryCard:hover,
-  .mumMemoryCard:active {
-    transform: rotate(var(--memory-rotate, 0deg));
+  .mumScrapbookItem .mumMemoryCard:hover,
+  .mumScrapbookItem .mumMemoryCard:active {
+    transform: none;
   }
 
   .mumLightbox {
