@@ -380,17 +380,39 @@
   }
 }
 
-@keyframes fadeOutTransition {
-  to {
+@keyframes introDissolve {
+  0% {
+    opacity: 1;
+    backdrop-filter: blur(0);
+    -webkit-backdrop-filter: blur(0);
+  }
+
+  70% {
+    opacity: 1;
+  }
+
+  100% {
     opacity: 0;
-    transform: scale(1.02);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+}
+
+@keyframes memoryHeartOverlayLift {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  100% {
+    opacity: 0.35;
+    transform: scale(1.07);
   }
 }
 
 .memoryOpeningTransition {
-  position: fixed;
+  position: absolute;
   inset: 0;
-  z-index: 9999;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -398,9 +420,7 @@
   pointer-events: none;
   background: radial-gradient(circle at center, rgba(255, 235, 218, 0.95), rgba(245, 232, 214, 0.96));
   contain: layout paint style;
-  opacity: 1;
-  transform: scale(1);
-  animation: fadeOutTransition 0.7s ease 2.5s forwards;
+  animation: memoryHeartOverlayLift 3.15s ease forwards;
 }
 
 .memoryWarmGlow {
@@ -620,20 +640,52 @@
   transform: scale(0.98);
 }
 
+/* Gallery sits under intro / heart overlays; fades and sharpens as overlays lift */
+.mumGalleryLayer {
+  position: relative;
+  z-index: 2;
+  opacity: 0;
+  transform: scale(1.03);
+  filter: blur(10px);
+  transition:
+    opacity 1.4s ease,
+    transform 1.6s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 1.6s ease;
+}
+
+.mumGalleryVisible {
+  opacity: 1;
+  transform: scale(1);
+  filter: blur(0);
+}
+
+/* Full-screen stack above gallery until transition completes */
+.mumIntroOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+}
+
+.mumIntroOverlayIdle {
+  pointer-events: auto;
+}
+
+.mumIntroOverlayOpening {
+  pointer-events: auto;
+  animation: introDissolve 3.2s ease forwards;
+}
+
+.mumIntroOverlay .mumIntro {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
 /* Museum — above floating particles */
 .mumMuseum {
   position: relative;
   z-index: 2;
-  opacity: 0;
-  transform: translateY(18px);
-  transition:
-    opacity 0.95s cubic-bezier(0.22, 1, 0.36, 1) 0.08s,
-    transform 0.95s cubic-bezier(0.22, 1, 0.36, 1) 0.08s;
-}
-
-.mumMuseumVisible {
-  opacity: 1;
-  transform: translateY(0);
 }
 
 .mumMuseumInner {
@@ -663,7 +715,7 @@
   transform: translateY(12px);
 }
 
-.mumMuseumVisible .mumMuseumHeading {
+.mumGalleryVisible .mumMuseumHeading {
   animation: fadeUpSoft 0.85s cubic-bezier(0.22, 1, 0.36, 1) 0.05s forwards;
 }
 
@@ -686,7 +738,7 @@
   transform: translateY(12px);
 }
 
-.mumMuseumVisible .mumMuseumHandLine {
+.mumGalleryVisible .mumMuseumHandLine {
   animation: fadeUpSoft 0.88s cubic-bezier(0.22, 1, 0.36, 1) 0.18s forwards;
 }
 
@@ -700,7 +752,7 @@
   transform: translateY(10px);
 }
 
-.mumMuseumVisible .mumMuseumLede {
+.mumGalleryVisible .mumMuseumLede {
   animation: fadeUpSoft 0.85s cubic-bezier(0.22, 1, 0.36, 1) 0.32s forwards;
 }
 
@@ -713,7 +765,7 @@
   transform: translateY(8px);
 }
 
-.mumMuseumVisible .mumMuseumHeart {
+.mumGalleryVisible .mumMuseumHeart {
   animation: fadeUpSoft 0.78s cubic-bezier(0.22, 1, 0.36, 1) 0.42s forwards;
 }
 
@@ -721,7 +773,7 @@
   display: inline-block;
 }
 
-.mumMuseumVisible .mumMuseumHeartPulse {
+.mumGalleryVisible .mumMuseumHeartPulse {
   animation: heartBeat 2.85s ease-in-out 1.15s infinite;
 }
 
@@ -1433,16 +1485,16 @@
     opacity: 0.07;
   }
 
-  .mumMuseumVisible .mumMuseumHeading,
-  .mumMuseumVisible .mumMuseumHandLine,
-  .mumMuseumVisible .mumMuseumLede,
-  .mumMuseumVisible .mumMuseumHeart {
+  .mumGalleryVisible .mumMuseumHeading,
+  .mumGalleryVisible .mumMuseumHandLine,
+  .mumGalleryVisible .mumMuseumLede,
+  .mumGalleryVisible .mumMuseumHeart {
     animation: none !important;
     opacity: 1;
     transform: none;
   }
 
-  .mumMuseumVisible .mumMuseumHeartPulse {
+  .mumGalleryVisible .mumMuseumHeartPulse {
     animation: none !important;
   }
 
