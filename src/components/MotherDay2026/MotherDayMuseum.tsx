@@ -357,112 +357,13 @@ const MotherDayMuseum = memo(() => {
 
       <FloatingMemoryParticles />
 
-      {transitionStage === "opening" ? (
-        <div aria-hidden className={styles.memoryOpeningTransition}>
-          <div className={styles.memoryWarmGlow} />
-
-          <svg className={styles.memoryHeartSvg} viewBox="0 0 500 460">
-            <path
-              className={styles.memoryHeartPath}
-              d={MEMORY_HEART_PATH}
-              pathLength={1600}
-            />
-          </svg>
-
-          <div className={styles.memoryHeartFill} />
-
-          <div className={styles.memoryPhotoBurst}>
-            <span
-              className={classNames(
-                styles.memoryMiniPhoto,
-                styles.memoryMiniPhotoA,
-              )}
-            />
-            <span
-              className={classNames(
-                styles.memoryMiniPhoto,
-                styles.memoryMiniPhotoB,
-              )}
-            />
-            <span
-              className={classNames(
-                styles.memoryMiniPhoto,
-                styles.memoryMiniPhotoC,
-              )}
-            />
-            <span
-              className={classNames(
-                styles.memoryMiniPhoto,
-                styles.memoryMiniPhotoD,
-              )}
-            />
-            <span
-              className={classNames(
-                styles.memoryMiniPhoto,
-                styles.memoryMiniPhotoE,
-              )}
-            />
-            <span
-              className={classNames(
-                styles.memoryMiniPhoto,
-                styles.memoryMiniPhotoF,
-              )}
-            />
-          </div>
-
-          <div className={styles.memoryOpeningCopy}>
-            <p>打开回忆</p>
-            <small>慢慢看</small>
-          </div>
-        </div>
-      ) : null}
-
-      <section
-        aria-hidden={entered}
+      <div
         className={classNames(
-          styles.mumIntro,
-          entered && styles.mumIntroHidden,
+          styles.mumGalleryLayer,
+          hasEntered && styles.mumGalleryVisible,
         )}
       >
-        <div aria-hidden className={styles.mumIntroAmbientHearts}>
-          {INTRO_AMBIENT_HEARTS.map((h, i) => (
-            <span
-              className={styles.mumIntroAmbientHeart}
-              key={`intro-ambient-${i}`}
-              style={
-                {
-                  "--iah-delay": h.delay,
-                  "--iah-dur": h.dur,
-                  left: h.left,
-                  top: h.top,
-                } as CSSProperties
-              }
-            >
-              {h.g}
-            </span>
-          ))}
-        </div>
-        <h1 className={styles.mumIntroTitle}>给妈妈</h1>
-        <p className={styles.mumIntroSubtitle}>
-          一些照片，一些回忆，还有一些平时没怎么说出口的话。
-        </p>
-        <button
-          className={styles.mumIntroBtn}
-          disabled={transitionStage !== "idle"}
-          onClick={handleIntroEnter}
-          type="button"
-        >
-          打开看看
-        </button>
-      </section>
-
-      <main
-        className={classNames(
-          styles.mumMuseum,
-          entered && styles.mumMuseumVisible,
-        )}
-        hidden={!entered}
-      >
+        <main aria-hidden={!revealComplete} className={styles.mumMuseum}>
         <div className={styles.mumMuseumInner}>
           <header className={styles.mumMuseumHeader}>
             <h2 className={styles.mumMuseumHeading}>回忆</h2>
@@ -529,6 +430,111 @@ const MotherDayMuseum = memo(() => {
           </section>
         </div>
       </main>
+      </div>
+
+      {transitionStage !== "done" ? (
+        <div
+          className={classNames(
+            styles.mumIntroOverlay,
+            transitionStage === "idle" && styles.mumIntroOverlayIdle,
+            transitionStage === "opening" &&
+              styles.mumIntroOverlayOpening,
+          )}
+        >
+          {transitionStage === "idle" ? (
+            <section className={styles.mumIntro}>
+              <div aria-hidden className={styles.mumIntroAmbientHearts}>
+                {INTRO_AMBIENT_HEARTS.map((h, i) => (
+                  <span
+                    className={styles.mumIntroAmbientHeart}
+                    key={`intro-ambient-${i}`}
+                    style={
+                      {
+                        "--iah-delay": h.delay,
+                        "--iah-dur": h.dur,
+                        left: h.left,
+                        top: h.top,
+                      } as CSSProperties
+                    }
+                  >
+                    {h.g}
+                  </span>
+                ))}
+              </div>
+              <h1 className={styles.mumIntroTitle}>给妈妈</h1>
+              <p className={styles.mumIntroSubtitle}>
+                一些照片，一些回忆，还有一些平时没怎么说出口的话。
+              </p>
+              <button
+                className={styles.mumIntroBtn}
+                disabled={transitionStage !== "idle"}
+                onClick={handleIntroEnter}
+                type="button"
+              >
+                打开看看
+              </button>
+            </section>
+          ) : (
+            <div aria-hidden className={styles.memoryOpeningTransition}>
+              <div className={styles.memoryWarmGlow} />
+
+              <svg className={styles.memoryHeartSvg} viewBox="0 0 500 460">
+                <path
+                  className={styles.memoryHeartPath}
+                  d={MEMORY_HEART_PATH}
+                  pathLength={1600}
+                />
+              </svg>
+
+              <div className={styles.memoryHeartFill} />
+
+              <div className={styles.memoryPhotoBurst}>
+                <span
+                  className={classNames(
+                    styles.memoryMiniPhoto,
+                    styles.memoryMiniPhotoA,
+                  )}
+                />
+                <span
+                  className={classNames(
+                    styles.memoryMiniPhoto,
+                    styles.memoryMiniPhotoB,
+                  )}
+                />
+                <span
+                  className={classNames(
+                    styles.memoryMiniPhoto,
+                    styles.memoryMiniPhotoC,
+                  )}
+                />
+                <span
+                  className={classNames(
+                    styles.memoryMiniPhoto,
+                    styles.memoryMiniPhotoD,
+                  )}
+                />
+                <span
+                  className={classNames(
+                    styles.memoryMiniPhoto,
+                    styles.memoryMiniPhotoE,
+                  )}
+                />
+                <span
+                  className={classNames(
+                    styles.memoryMiniPhoto,
+                    styles.memoryMiniPhotoF,
+                  )}
+                />
+              </div>
+
+              <div className={styles.memoryOpeningCopy}>
+                <p>打开回忆</p>
+                <small>慢慢看</small>
+              </div>
+            </div>
+          )}
+        </div>
+      ) : null}
 
       {active ? (
         <div
@@ -580,7 +586,7 @@ const MotherDayMuseum = memo(() => {
         </div>
       ) : null}
 
-      {entered ? (
+      {revealComplete ? (
         <button
           aria-label={musicMuted ? "开启背景音乐" : "关闭背景音乐"}
           className={styles.mumMusicToggle}
